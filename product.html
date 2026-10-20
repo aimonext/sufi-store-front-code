@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product — Store</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="js/components.js"></script>
+  <script defer src="js/app.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: {
+        colors: { brand: { 50:'#f5f7ff',100:'#ebeffe',200:'#d6ddfe',300:'#b3befd',400:'#8a98fc',500:'#6366f1',600:'#4f46e5',700:'#4338ca',800:'#3730a3',900:'#312e81' } },
+        fontFamily: { display: ['"Playfair Display"','serif'], body: ['Inter','sans-serif'] },
+        boxShadow: { soft: '0 10px 40px -10px rgba(0,0,0,0.12)' }
+      } }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>[x-cloak]{display:none!important}</style>
+<link rel="stylesheet" href="theme.css">
+</head>
+<body class="bg-gray-50 text-gray-800 font-body antialiased" x-data="productPage()">
+
+  <div id="app-header" data-page="shop"></div>
+
+  <main class="max-w-7xl mx-auto px-4 py-10">
+    <nav class="text-sm text-gray-500 mb-6">
+      <a href="index.html" class="hover:text-brand-600">Home</a> <span class="mx-2">/</span>
+      <a href="index.html#products" class="hover:text-brand-600">Products</a> <span class="mx-2">/</span>
+      <span class="text-gray-900" x-text="product ? product.name : 'Product'"></span>
+    </nav>
+
+    <div x-show="!product" class="text-center py-20 text-gray-500">Product not found. <a href="index.html" class="text-brand-600">Back to shop</a></div>
+
+    <div x-show="product" class="grid md:grid-cols-2 gap-10 items-start">
+      <div>
+        <div class="aspect-square rounded-3xl overflow-hidden shadow-soft bg-gray-100">
+          <img :src="product.img" :alt="product.name" class="w-full h-full object-cover" />
+        </div>
+      </div>
+      <div>
+        <div class="text-xs text-gray-400 uppercase tracking-wider font-medium" x-text="product.category"></div>
+        <h1 class="font-display text-3xl sm:text-4xl font-bold text-gray-900 mt-2" x-text="product.name"></h1>
+        <div class="flex items-center gap-2 mt-3 text-sm">
+          <span class="text-amber-500" x-text="'★'.repeat(Math.round(product.rating||5))"></span>
+          <span class="text-gray-400" x-show="product.reviews" x-text="'('+product.reviews+' reviews)'"></span>
+        </div>
+        <div class="mt-4 flex items-center gap-3">
+          <span class="text-3xl font-bold text-gray-900" x-text="'$'+product.price"></span>
+          <span x-show="product.oldPrice" class="text-gray-400 line-through text-lg" x-text="'$'+product.oldPrice"></span>
+          <span x-show="product.badge" x-text="product.badge" class="bg-brand-600 text-white text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full"></span>
+        </div>
+        <p class="mt-5 text-gray-500 leading-relaxed">A beautifully crafted piece designed for everyday use. Made with quality materials and attention to detail.</p>
+
+        <div class="mt-6 flex items-center gap-4">
+          <div class="flex items-center border border-gray-200 rounded-full">
+            <button @click="qty>1 && qty--" class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-50">−</button>
+            <span class="w-10 text-center font-medium" x-text="qty"></span>
+            <button @click="qty++" class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-50">+</button>
+          </div>
+          <button @click="addToCart()" class="flex-1 px-6 py-3 bg-gray-900 hover:bg-brand-600 text-white rounded-full font-medium transition shadow-soft">Add to cart</button>
+          <button @click="toggleWish()" class="p-3 rounded-full border border-gray-200 hover:bg-gray-50 transition" :aria-label="isWished()?'Remove from wishlist':'Add to wishlist'">
+            <svg class="w-5 h-5" :class="isWished()?'fill-rose-500 text-rose-500':'text-gray-500'" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+          </button>
+        </div>
+
+        <div class="mt-8 border-t border-gray-100 pt-6 space-y-3 text-sm text-gray-600">
+          <div class="flex justify-between"><span>Category</span><span class="text-gray-900" x-text="product.category"></span></div>
+          <div class="flex justify-between"><span>Availability</span><span class="text-green-600 font-medium">In stock</span></div>
+          <div class="flex justify-between"><span>Shipping</span><span>Free over $50</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Related -->
+    <section class="mt-16" x-show="product">
+      <h2 class="font-display text-2xl font-bold text-gray-900 mb-6">You may also like</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
+        <template x-for="p in related()" :key="p.id">
+          <a :href="'product.html?id='+p.id" class="product-card bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-soft transition group border border-gray-100 block">
+            <div class="aspect-square overflow-hidden bg-gray-100">
+              <img :src="p.img" :alt="p.name" class="product-img w-full h-full object-cover" />
+            </div>
+            <div class="p-4">
+              <div class="text-xs text-gray-400 uppercase tracking-wider font-medium" x-text="p.category"></div>
+              <div class="font-medium mt-1.5 line-clamp-1 text-gray-900" x-text="p.name"></div>
+              <div class="mt-2 font-bold text-gray-900" x-text="'$'+p.price"></div>
+            </div>
+          </a>
+        </template>
+      </div>
+    </section>
+  </main>
+
+  <div id="app-footer"></div>
+</body>
+</html>

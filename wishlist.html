@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wishlist — Store</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="js/components.js"></script>
+  <script defer src="js/app.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: {
+        colors: { brand: { 50:'#f5f7ff',100:'#ebeffe',200:'#d6ddfe',300:'#b3befd',400:'#8a98fc',500:'#6366f1',600:'#4f46e5',700:'#4338ca',800:'#3730a3',900:'#312e81' } },
+        fontFamily: { display: ['"Playfair Display"','serif'], body: ['Inter','sans-serif'] },
+        boxShadow: { soft: '0 10px 40px -10px rgba(0,0,0,0.12)' }
+      } }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>[x-cloak]{display:none!important} .product-img{transition:transform .6s cubic-bezier(.2,.8,.2,1)} .product-card:hover .product-img{transform:scale(1.08)}</style>
+<link rel="stylesheet" href="theme.css">
+</head>
+<body class="bg-gray-50 text-gray-800 font-body antialiased" x-data="wishlistPage()">
+
+  <div id="app-header" data-page="wishlist"></div>
+
+  <main class="max-w-7xl mx-auto px-4 py-10">
+    <h1 class="font-display text-3xl font-bold text-gray-900 mb-6">Your wishlist</h1>
+
+    <div x-show="wishlist.length===0" class="bg-white rounded-2xl border border-gray-100 p-12 text-center shadow-sm">
+      <div class="text-5xl mb-4">♡</div>
+      <p class="text-gray-600 mb-4">Your wishlist is empty.</p>
+      <a href="index.html" class="inline-block px-6 py-2.5 bg-gray-900 text-white rounded-full font-medium hover:bg-brand-600 transition">Discover products</a>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5" x-show="wishlist.length>0">
+      <template x-for="p in wishlist" :key="p.id">
+        <article class="product-card bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-soft transition group border border-gray-100">
+          <div class="relative aspect-square overflow-hidden bg-gray-100">
+            <img :src="p.img" :alt="p.name" class="product-img w-full h-full object-cover" />
+            <button @click="remove(p.id)" class="absolute top-3 right-3 p-2 rounded-full bg-white/80 backdrop-blur hover:bg-white transition shadow" aria-label="Remove">
+              <svg class="w-4 h-4 text-rose-500 fill-rose-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+          </div>
+          <div class="p-4">
+            <div class="text-xs text-gray-400 uppercase tracking-wider font-medium" x-text="p.category"></div>
+            <h3 class="font-medium mt-1.5 line-clamp-1 text-gray-900" x-text="p.name"></h3>
+            <div class="mt-2.5 flex items-center justify-between">
+              <span class="font-bold text-gray-900" x-text="'$'+p.price"></span>
+              <button @click="moveToCart(p)" class="text-xs px-3 py-1.5 bg-gray-900 hover:bg-brand-600 text-white rounded-full transition">Add to cart</button>
+            </div>
+          </div>
+        </article>
+      </template>
+    </div>
+  </main>
+
+  <div id="app-footer"></div>
+</body>
+</html>

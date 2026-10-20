@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lumen — Shop</title>
+  <meta name="description" content="Online store" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="js/components.js"></script>
+  <script defer src="js/app.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: { 50:'#f5f7ff',100:'#ebeffe',200:'#d6ddfe',300:'#b3befd',400:'#8a98fc',500:'#6366f1',600:'#4f46e5',700:'#4338ca',800:'#3730a3',900:'#312e81' },
+          },
+          fontFamily: { display: ['"Playfair Display"','serif'], body: ['Inter','sans-serif'] },
+          boxShadow: { soft: '0 10px 40px -10px rgba(0,0,0,0.12)' }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    [x-cloak]{display:none!important}
+    .product-img{transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+    .product-card:hover .product-img{transform:scale(1.08)}
+    .glass{background:rgba(255,255,255,0.7);backdrop-filter:blur(12px)}
+  </style>
+<link rel="stylesheet" href="theme.css">
+</head>
+<body class="bg-gray-50 text-gray-800 font-body antialiased" x-data="store()">
+
+  <!-- Announcement -->
+  <div id="app-header" data-page="home"></div>
+
+  <!-- Hero -->
+  <section class="relative overflow-hidden">
+    <template x-for="(s,i) in heroSlides" :key="i">
+      <div x-show="heroIndex===i" x-transition.opacity.duration.700ms class="max-w-7xl mx-auto px-4 py-12 lg:py-20 grid lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <p class="text-brand-600 text-sm font-semibold tracking-widest uppercase mb-3" x-text="s.eyebrow"></p>
+          <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-gray-900" x-text="s.title"></h1>
+          <p class="mt-5 text-gray-500 max-w-md text-lg" x-text="s.subtitle"></p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a :href="s.link" class="px-7 py-3 bg-gray-900 hover:bg-brand-600 text-white rounded-full font-medium transition shadow-soft" x-text="s.cta"></a>
+            <a href="#story" class="px-7 py-3 border border-gray-300 rounded-full font-medium hover:bg-gray-100 transition">Learn more</a>
+          </div>
+          <div class="mt-10 flex gap-8 text-sm">
+            <div><div class="font-bold text-2xl text-gray-900">1k+</div><div class="text-gray-500">Customers</div></div>
+            <div><div class="font-bold text-2xl text-gray-900">4.9★</div><div class="text-gray-500">Rating</div></div>
+            <div><div class="font-bold text-2xl text-gray-900">30d</div><div class="text-gray-500">Returns</div></div>
+          </div>
+        </div>
+        <div class="relative">
+          <div class="aspect-[4/5] rounded-3xl overflow-hidden shadow-soft">
+            <img :src="s.image" :alt="s.title" class="w-full h-full object-cover" />
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <!-- Controls (only if multiple slides) -->
+    <div x-show="heroSlides.length > 1" class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+      <template x-for="(s,i) in heroSlides" :key="i">
+        <button @click="heroIndex=i" :class="heroIndex===i ? 'bg-gray-900 w-6' : 'bg-gray-300 w-2.5'" class="h-2.5 rounded-full transition-all"></button>
+      </template>
+    </div>
+    <button x-show="heroSlides.length > 1" @click="prevHero()" class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 backdrop-blur shadow flex items-center justify-center hover:bg-white transition z-10" aria-label="Previous">‹</button>
+    <button x-show="heroSlides.length > 1" @click="nextHero()" class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 backdrop-blur shadow flex items-center justify-center hover:bg-white transition z-10" aria-label="Next">›</button>
+  </section>
+
+  <!-- Categories -->
+  <section class="max-w-7xl mx-auto px-4 py-12">
+    <div class="flex items-end justify-between mb-6">
+      <h2 class="font-display text-2xl sm:text-3xl font-bold text-gray-900">Shop by category</h2>
+      <a href="#products" class="text-sm text-brand-600 hover:underline">View all</a>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <template x-for="c in categories" :key="c.name">
+        <button @click="activeCat=c.name" class="group relative aspect-square rounded-2xl overflow-hidden shadow-sm hover:shadow-soft transition">
+          <img :src="c.img" :alt="c.name" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+          <div class="absolute bottom-4 left-4 text-white font-semibold text-lg" x-text="c.name"></div>
+        </button>
+      </template>
+    </div>
+  </section>
+
+  <!-- Products -->
+  <section id="products" class="max-w-7xl mx-auto px-4 py-12">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+      <div>
+        <h2 class="font-display text-2xl sm:text-3xl font-bold text-gray-900">Featured products</h2>
+        <p class="text-gray-500 text-sm mt-1">Hand-picked for you</p>
+      </div>
+      <div class="flex gap-2 flex-wrap">
+        <button @click="activeCat='all'" :class="activeCat==='all'?'bg-gray-900 text-white':'bg-white border border-gray-200 text-gray-700 hover:border-gray-300'" class="px-4 py-2 rounded-full text-sm font-medium transition">All</button>
+        <template x-for="c in categoryNames" :key="c">
+          <button @click="activeCat=c" :class="activeCat===c?'bg-gray-900 text-white':'bg-white border border-gray-200 text-gray-700 hover:border-gray-300'" class="px-4 py-2 rounded-full text-sm font-medium transition" x-text="c"></button>
+        </template>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+      <template x-for="p in filteredProducts()" :key="p.id">
+        <article class="product-card bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-soft transition group border border-gray-100">
+          <div class="relative aspect-square overflow-hidden bg-gray-100">
+            <a :href="'product.html?id='+p.id"><img :src="p.img" :alt="p.name" class="product-img w-full h-full object-cover" /></a>
+            <span x-show="p.badge" x-text="p.badge" class="absolute top-3 left-3 bg-brand-600 text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow"></span>
+            <button @click="toggleWish(p)" class="absolute top-3 right-3 p-2 rounded-full bg-white/80 backdrop-blur hover:bg-white transition shadow" :aria-label="isWished(p.id)?'Remove from wishlist':'Add to wishlist'">
+              <svg class="w-4 h-4" :class="isWished(p.id)?'fill-rose-500 text-rose-500':'text-gray-500'" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+            </button>
+            <div class="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition duration-300">
+              <button @click="addToCart(p)" class="w-full bg-white/95 backdrop-blur text-gray-900 text-sm font-semibold py-2.5 rounded-full shadow hover:bg-white transition">Quick add</button>
+            </div>
+          </div>
+          <div class="p-4">
+            <div class="text-xs text-gray-400 uppercase tracking-wider font-medium" x-text="p.category"></div>
+            <a :href="'product.html?id='+p.id" class="font-medium mt-1.5 line-clamp-1 text-gray-900 hover:text-brand-600 block" x-text="p.name"></a>
+            <div class="flex items-center gap-1 mt-1 text-xs text-amber-500">
+              <span x-text="'★'.repeat(Math.round(p.rating||5))"></span>
+              <span class="text-gray-400" x-show="p.reviews" x-text="'('+p.reviews+')'"></span>
+            </div>
+            <div class="mt-2.5 flex items-center gap-2">
+              <span class="font-bold text-gray-900" x-text="'$'+p.price"></span>
+              <span x-show="p.oldPrice" class="text-gray-400 line-through text-sm" x-text="'$'+p.oldPrice"></span>
+            </div>
+          </div>
+        </article>
+      </template>
+    </div>
+    <p x-show="filteredProducts().length===0" class="text-center text-gray-500 py-16">No products match your search.</p>
+  </section>
+
+  <!-- Story -->
+  <section id="story" class="bg-white py-16 mt-4 border-y border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
+      <div class="aspect-[4/3] rounded-3xl overflow-hidden shadow-soft">
+        <img src="https://picsum.photos/seed/story/900/675" alt="Story" class="w-full h-full object-cover" />
+      </div>
+      <div>
+        <p class="text-brand-600 text-sm font-semibold tracking-widest uppercase mb-3" x-text="config.storyEyebrow">Our story</p>
+        <h2 class="font-display text-3xl font-bold text-gray-900" x-text="config.storyTitle">Made with care</h2>
+        <p class="mt-4 text-gray-500 leading-relaxed" x-text="config.storyText">We partner with makers to bring you quality products.</p>
+        <a href="#" class="inline-block mt-6 text-brand-600 font-medium hover:underline">Read more →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="max-w-7xl mx-auto px-4 py-16">
+    <div class="bg-gray-900 rounded-3xl p-8 sm:p-14 text-center text-white shadow-soft relative overflow-hidden">
+      <div class="absolute inset-0 opacity-20" style="background:radial-gradient(circle at 30% 20%, #6366f1, transparent 60%)"></div>
+      <div class="relative">
+        <h2 class="font-display text-3xl font-bold">Join the inner circle</h2>
+        <p class="mt-2 text-gray-300 max-w-md mx-auto">Early access to new arrivals and exclusive offers.</p>
+        <form @submit.prevent="subscribe()" class="mt-6 flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+          <input type="email" required placeholder="you@example.com" x-model="email" class="flex-1 px-5 py-3 rounded-full text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-400" />
+          <button type="submit" class="px-7 py-3 bg-brand-600 hover:bg-brand-500 rounded-full font-medium transition" :disabled="subscribing" x-text="subscribed?'Subscribed ✓':(subscribing?'Subscribing…':'Subscribe')"></button>
+        </form>
+        <p x-show="subscribed" x-cloak class="mt-3 text-sm text-brand-300">Thanks! Check your inbox.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div id="app-footer"></div>
+
+  <!-- Toast -->
+  <div x-show="toast" x-cloak x-transition class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-gray-900 text-white px-5 py-3 rounded-full shadow-soft text-sm z-50" x-text="toast"></div>
+</body>
+</html>

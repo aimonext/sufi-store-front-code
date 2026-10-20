@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop — Store</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="js/components.js"></script>
+  <script defer src="js/app.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: {
+        colors: { brand: { 50:'#f5f7ff',100:'#ebeffe',200:'#d6ddfe',300:'#b3befd',400:'#8a98fc',500:'#6366f1',600:'#4f46e5',700:'#4338ca',800:'#3730a3',900:'#312e81' } },
+        fontFamily: { display: ['"Playfair Display"','serif'], body: ['Inter','sans-serif'] },
+        boxShadow: { soft: '0 10px 40px -10px rgba(0,0,0,0.12)' }
+      } }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>[x-cloak]{display:none!important} .product-img{transition:transform .6s cubic-bezier(.2,.8,.2,1)} .product-card:hover .product-img{transform:scale(1.08)}</style>
+<link rel="stylesheet" href="theme.css">
+</head>
+<body class="bg-gray-50 text-gray-800 font-body antialiased" x-data="shopPage()">
+
+  <div id="app-header" data-page="shop"></div>
+
+  <section class="bg-white border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 py-10">
+      <h1 class="font-display text-4xl font-bold text-gray-900">Shop all</h1>
+      <p class="text-gray-500 mt-2">Browse our full collection.</p>
+    </div>
+  </section>
+
+  <main class="max-w-7xl mx-auto px-4 py-10 grid lg:grid-cols-4 gap-8">
+    <!-- Filters -->
+    <aside class="lg:col-span-1 space-y-6">
+      <div class="bg-white rounded-2xl border border-gray-100 p-5 shadow-sm">
+        <h3 class="font-semibold text-gray-900 mb-3">Categories</h3>
+        <div class="space-y-2">
+          <button @click="activeCat='all'" :class="activeCat==='all'?'text-brand-600 font-medium':'text-gray-600'" class="block w-full text-left text-sm hover:text-brand-600 transition">All</button>
+          <template x-for="c in categoryNames" :key="c">
+            <button @click="activeCat=c" :class="activeCat===c?'text-brand-600 font-medium':'text-gray-600'" class="block w-full text-left text-sm hover:text-brand-600 transition" x-text="c"></button>
+          </template>
+        </div>
+      </div>
+      <div class="bg-white rounded-2xl border border-gray-100 p-5 shadow-sm">
+        <h3 class="font-semibold text-gray-900 mb-3">Max price: $<span x-text="maxPrice"></span></h3>
+        <input type="range" min="0" max="2000" step="10" x-model="maxPrice" class="w-full accent-brand-600" />
+      </div>
+      <div class="bg-white rounded-2xl border border-gray-100 p-5 shadow-sm">
+        <h3 class="font-semibold text-gray-900 mb-3">Sort by</h3>
+        <select x-model="sort" class="w-full px-3 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-brand-400">
+          <option value="featured">Featured</option>
+          <option value="price-asc">Price: Low to high</option>
+          <option value="price-desc">Price: High to low</option>
+          <option value="name">Name A–Z</option>
+        </select>
+      </div>
+    </aside>
+
+    <!-- Grid -->
+    <div class="lg:col-span-3">
+      <div class="flex items-center justify-between mb-4 text-sm text-gray-500">
+        <span x-text="filteredProducts().length + ' products'"></span>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-5">
+        <template x-for="p in filteredProducts()" :key="p.id">
+          <a :href="'product.html?id='+p.id" class="product-card bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-soft transition group border border-gray-100 block">
+            <div class="relative aspect-square overflow-hidden bg-gray-100">
+              <img :src="p.img" :alt="p.name" class="product-img w-full h-full object-cover" />
+              <span x-show="p.badge" x-text="p.badge" class="absolute top-3 left-3 bg-brand-600 text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow"></span>
+            </div>
+            <div class="p-4">
+              <div class="text-xs text-gray-400 uppercase tracking-wider font-medium" x-text="p.category"></div>
+              <div class="font-medium mt-1.5 line-clamp-1 text-gray-900" x-text="p.name"></div>
+              <div class="flex items-center gap-1 mt-1 text-xs text-amber-500">
+                <span x-text="'★'.repeat(Math.round(p.rating||5))"></span>
+                <span class="text-gray-400" x-show="p.reviews" x-text="'('+p.reviews+')'"></span>
+              </div>
+              <div class="mt-2.5 flex items-center justify-between">
+                <span class="font-bold text-gray-900" x-text="'$'+p.price"></span>
+                <button @click.prevent="addToCart(p)" class="text-xs px-3 py-1.5 bg-gray-900 hover:bg-brand-600 text-white rounded-full transition">Add</button>
+              </div>
+            </div>
+          </a>
+        </template>
+      </div>
+      <p x-show="filteredProducts().length===0" class="text-center text-gray-500 py-16">No products match your filters.</p>
+    </div>
+  </main>
+
+  <div id="app-footer"></div>
+</body>
+</html>
