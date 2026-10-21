@@ -20,7 +20,7 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap&family=Playfair+Display:wght@500;600;700&display=swap&display=swap" rel="stylesheet">
   <style>[x-cloak]{display:none!important} .product-img{transition:transform .6s cubic-bezier(.2,.8,.2,1)} .product-card:hover .product-img{transform:scale(1.08)}</style>
 <link rel="stylesheet" href="theme.css">
 </head>
@@ -71,7 +71,7 @@
         <template x-for="p in filteredProducts()" :key="p.id">
           <a :href="'product.html?id='+p.id" class="product-card bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-soft transition group border border-gray-100 block">
             <div class="relative aspect-square overflow-hidden bg-gray-100">
-              <img loading="lazy" :src="p.img" :alt="p.name" class="product-img w-full h-full object-cover" />
+              <img decoding="async" loading="lazy" :src="p.img" :alt="p.name" class="product-img w-full h-full object-cover" />
               <span x-show="p.badge" x-text="p.badge" class="absolute top-3 left-3 bg-brand-600 text-white text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow"></span>
             </div>
             <div class="p-4">
