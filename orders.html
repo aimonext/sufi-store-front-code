@@ -44,6 +44,7 @@
             </div>
             <div class="flex items-center gap-3">
               <span class="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full" :class="o.status==='Delivered'?'bg-green-100 text-green-700':'bg-amber-100 text-amber-700'" x-text="o.status"></span>
+              <a :href="'track.html?code='+o.id" class="text-xs text-brand-600 hover:underline">Track</a>
               <span class="font-bold text-gray-900" x-text="'$'+o.total.toFixed(2)"></span>
             </div>
           </div>

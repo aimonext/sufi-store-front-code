@@ -241,6 +241,26 @@ document.addEventListener('alpine:init', () => {
     init(){
       if(this.dark) document.documentElement.classList.add('dark');
       this.$watch('dark', v => { localStorage.setItem('dark', v); document.documentElement.classList.toggle('dark', v); });
+      if(this.orders.length === 0){
+        const sample = {
+          id: 'ORD-DEMO123',
+          date: new Date().toLocaleDateString(),
+          items: [
+            { id: PRODUCTS[0].id, name: PRODUCTS[0].name, price: PRODUCTS[0].price, img: PRODUCTS[0].img, qty: 1, variant: (PRODUCTS[0].variants && PRODUCTS[0].variants[0].attr) || {} },
+            { id: PRODUCTS[5].id, name: PRODUCTS[5].name, price: PRODUCTS[5].price, img: PRODUCTS[5].img, qty: 2, variant: (PRODUCTS[5].variants && PRODUCTS[5].variants[0].attr) || {} },
+            { id: PRODUCTS[8].id, name: PRODUCTS[8].name, price: PRODUCTS[8].price, img: PRODUCTS[8].img, qty: 3, variant: (PRODUCTS[8].variants && PRODUCTS[8].variants[0].attr) || {} },
+          ],
+          subtotal: PRODUCTS[0].price + PRODUCTS[5].price*2 + PRODUCTS[8].price*3,
+          shipping: 5,
+          total: PRODUCTS[0].price + PRODUCTS[5].price*2 + PRODUCTS[8].price*3 + 5,
+          status: 'Shipped',
+          shippingAddress: '123 Market St, San Francisco, CA 94103',
+          paymentMethod: 'Visa ending in 4242',
+          trackingNumber: 'TRK987654321',
+        };
+        this.orders = [sample];
+        save('orders', this.orders);
+      }
     },
     cartCount(){ return this.cart.reduce((s,i)=>s+i.qty,0); },
     wishlistCount(){ return this.wishlist.length; },
@@ -417,6 +437,61 @@ document.addEventListener('alpine:init', () => {
     remove(id){ this.items = this.items.filter(n=>n.id!==id); save('notifications', this.items); },
     clear(){ this.items=[]; save('notifications', []); },
   });
+
+  Alpine.data('trackPage', () => ({
+    cart: load('cart', []),
+    wishlist: load('wishlist', []),
+    dark: localStorage.getItem('dark') === 'true',
+    mobileOpen: false,
+    userOpen: false,
+    query: '',
+    code: '',
+    error: '',
+    order: null,
+    statuses: ['Processing', 'Shipped', 'Delivered'],
+    init(){
+      if(this.dark) document.documentElement.classList.add('dark');
+      this.$watch('dark', v => { localStorage.setItem('dark', v); document.documentElement.classList.toggle('dark', v); });
+      const params = new URLSearchParams(location.search);
+      if(load('orders', []).length === 0){
+        const sample = {
+          id: 'ORD-DEMO123',
+          date: new Date().toLocaleDateString(),
+          items: [
+            { id: PRODUCTS[0].id, name: PRODUCTS[0].name, price: PRODUCTS[0].price, img: PRODUCTS[0].img, qty: 1, variant: (PRODUCTS[0].variants && PRODUCTS[0].variants[0].attr) || {} },
+            { id: PRODUCTS[5].id, name: PRODUCTS[5].name, price: PRODUCTS[5].price, img: PRODUCTS[5].img, qty: 2, variant: (PRODUCTS[5].variants && PRODUCTS[5].variants[0].attr) || {} },
+            { id: PRODUCTS[8].id, name: PRODUCTS[8].name, price: PRODUCTS[8].price, img: PRODUCTS[8].img, qty: 3, variant: (PRODUCTS[8].variants && PRODUCTS[8].variants[0].attr) || {} },
+          ],
+          subtotal: PRODUCTS[0].price + PRODUCTS[5].price*2 + PRODUCTS[8].price*3,
+          shipping: 5,
+          total: PRODUCTS[0].price + PRODUCTS[5].price*2 + PRODUCTS[8].price*3 + 5,
+          status: 'Shipped',
+          shippingAddress: '123 Market St, San Francisco, CA 94103',
+          paymentMethod: 'Visa ending in 4242',
+          trackingNumber: 'TRK987654321',
+        };
+        save('orders', [sample]);
+      }
+      const c = params.get('code');
+      if(c){ this.code = c; this.track(); }
+      else { this.code = 'ORD-DEMO123'; this.track(); }
+    },
+    track(){
+      this.error = '';
+      this.order = null;
+      const orders = load('orders', []);
+      const found = orders.find(o => o.id === this.code.trim());
+      if(!found){ this.error = 'Order not found. Check the code and try again.'; return; }
+      this.order = found;
+    },
+    stepIndex(){
+      if(!this.order) return 0;
+      const idx = this.statuses.indexOf(this.order.status);
+      return idx >= 0 ? idx : 0;
+    },
+    cartCount(){ return this.cart.reduce((s,i)=>s+i.qty,0); },
+    wishlistCount(){ return this.wishlist.length; },
+  }));
 
   Alpine.data('contactPage', () => ({
     cart: load('cart', []),

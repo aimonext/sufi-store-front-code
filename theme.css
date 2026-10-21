@@ -14,5 +14,7 @@ html.dark input, html.dark select, html.dark textarea { background-color: #1e293
 html.dark .shadow-sm, html.dark .shadow-soft { box-shadow: 0 10px 40px -10px rgba(0,0,0,0.6); }
 html.dark .glass { background: rgba(30,41,59,0.7); }
 html.dark .product-card { border-color: #334155; }
-body { padding-bottom: 4.5rem; }
-@media (min-width: 768px) { body { padding-bottom: 0; } }
+body { min-height: 100vh; display: flex; flex-direction: column; }
+main { flex: 1 0 auto; }
+footer { flex-shrink: 0; padding-bottom: 4.5rem; }
+@media (min-width: 768px) { footer { padding-bottom: 0; } }

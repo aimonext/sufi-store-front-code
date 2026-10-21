@@ -3,7 +3,7 @@ function headerTemplate(page) {
   const dlink = (href, label, key) => `<a href="${href}" class="${page===key?'text-brand-600':'hover:text-brand-600'} transition">${label}</a>`;
   return `
   <div class="bg-brand-900 text-brand-100 text-xs sm:text-sm">
-    <div class="max-w-7xl mx-auto px-4 py-2.5 text-center">✨ Free shipping on orders over $50 · Easy 30-day returns</div>
+    <div class="max-w-7xl mx-auto px-4 py-2.5 text-center flex flex-wrap items-center justify-center gap-x-3 gap-y-1">✨ Free shipping on orders over $50 · Easy 30-day returns · <a href="track.html" class="underline hover:text-white">Track Order</a> · <a href="contact.html" class="underline hover:text-white">Help</a> · <a href="privacy.html" class="underline hover:text-white">Privacy</a></div>
   </div>
   <header class="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-gray-200/60">
     <div class="max-w-7xl mx-auto px-4 py-3 flex items-center gap-3">
