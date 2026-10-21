@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Store</title>
+  <script src="assets/js/tailwindcss.js"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: {
+        colors: { brand: { 50:'#f5f7ff',100:'#ebeffe',200:'#d6ddfe',300:'#b3befd',400:'#8a98fc',500:'#6366f1',600:'#4f46e5',700:'#4338ca',800:'#3730a3',900:'#312e81' } },
+        fontFamily: { display: ['system-ui','sans-serif'], body: ['system-ui','sans-serif'] },
+        boxShadow: { soft: '0 10px 40px -10px rgba(0,0,0,0.12)' }
+      } }
+    }
+  </script>
+  <script defer src="js/components.js"></script>
+  <script defer src="js/app.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link rel="stylesheet" href="theme.css">
+  <style>[x-cloak]{display:none!important}</style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-body antialiased" x-data="aboutPage()">
+
+  <div id="app-header" data-page="privacy"></div>
+
+  <main class="max-w-3xl mx-auto px-4 py-10">
+    <h1 class="font-display text-3xl font-bold text-gray-900 mb-6">Privacy Policy</h1>
+    <div class="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm space-y-4 text-sm text-gray-600 leading-relaxed">
+      <p>We respect your privacy. This policy explains how we collect, use, and protect your personal information when you shop with us.</p>
+      <h2 class="font-semibold text-gray-900 text-base">Information we collect</h2>
+      <p>We collect information you provide at checkout (name, email, address) and browsing data to improve your experience.</p>
+      <h2 class="font-semibold text-gray-900 text-base">How we use it</h2>
+      <p>Your information is used to process orders, provide support, and send updates you opt into. We never sell your data.</p>
+      <h2 class="font-semibold text-gray-900 text-base">Cookies</h2>
+      <p>We use cookies to remember your cart and preferences. You can disable cookies in your browser settings.</p>
+      <h2 class="font-semibold text-gray-900 text-base">Contact</h2>
+      <p>Questions? Reach us at privacy@lumen.store.</p>
+    </div>
+  </main>
+
+  <div id="app-footer"></div>
+</body>
+</html>

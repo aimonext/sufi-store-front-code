@@ -114,7 +114,30 @@ function headerTemplate(page) {
 function footerTemplate() {
   return `
   <footer class="border-t border-gray-200 bg-white py-8 mt-6">
-    <div class="max-w-7xl mx-auto px-4 text-center text-sm text-gray-500">© <span x-text="new Date().getFullYear()"></span> Lumen · Powered by Sufi Storefront</div>
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <span class="text-xs text-gray-400">We accept:</span>
+          <div class="flex gap-2 items-center">
+            <!-- Visa -->
+            <svg class="h-6 w-10" viewBox="0 0 48 32" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="32" rx="4" fill="#1A1F71"/><text x="24" y="21" font-family="Arial" font-size="12" font-weight="bold" fill="#fff" text-anchor="middle">VISA</text></svg>
+            <!-- Mastercard -->
+            <svg class="h-6 w-10" viewBox="0 0 48 32" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="32" rx="4" fill="#fff" stroke="#ddd"/><circle cx="18" cy="16" r="8" fill="#EB001B"/><circle cx="30" cy="16" r="8" fill="#F79E1B" opacity="0.9"/></svg>
+            <!-- Amex -->
+            <svg class="h-6 w-10" viewBox="0 0 48 32" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="32" rx="4" fill="#2E77BC"/><text x="24" y="20" font-family="Arial" font-size="9" font-weight="bold" fill="#fff" text-anchor="middle">AMEX</text></svg>
+            <!-- PayPal -->
+            <svg class="h-6 w-10" viewBox="0 0 48 32" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="32" rx="4" fill="#003087"/><text x="24" y="20" font-family="Arial" font-size="9" font-weight="bold" fill="#fff" text-anchor="middle">PayPal</text></svg>
+            <!-- Cash on Delivery -->
+            <svg class="h-6 w-10" viewBox="0 0 48 32" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="32" rx="4" fill="#16a34a"/><text x="24" y="14" font-family="Arial" font-size="7" font-weight="bold" fill="#fff" text-anchor="middle">CASH ON</text><text x="24" y="23" font-family="Arial" font-size="7" font-weight="bold" fill="#fff" text-anchor="middle">DELIVERY</text></svg>
+          </div>
+        </div>
+        <div class="flex gap-4 text-sm text-gray-500">
+          <a href="privacy.html" class="hover:text-gray-900 transition">Privacy Policy</a>
+          <a href="terms.html" class="hover:text-gray-900 transition">Terms &amp; Conditions</a>
+        </div>
+      </div>
+      <div class="mt-4 text-center text-xs text-gray-400">© <span x-text="new Date().getFullYear()"></span> Lumen · Powered by Sufi Storefront</div>
+    </div>
   </footer>`;
 }
 
