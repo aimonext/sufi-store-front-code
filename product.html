@@ -51,7 +51,7 @@
           <span class="text-gray-400" x-show="product.reviews" x-text="'('+product.reviews+' reviews)'"></span>
         </div>
         <div class="mt-4 flex items-center gap-3">
-          <span class="text-3xl font-bold text-gray-900" x-text="'$'+product.price"></span>
+          <span class="text-3xl font-bold text-gray-900" x-text="'$'+(selectedVariant ? selectedVariant.price : product.price)"></span>
           <span x-show="product.oldPrice" class="text-gray-400 line-through text-lg" x-text="'$'+product.oldPrice"></span>
           <span x-show="product.badge" x-text="product.badge" class="bg-brand-600 text-white text-xs font-bold uppercase tracking-wider px-2.5 py-1 rounded-full"></span>
         </div>

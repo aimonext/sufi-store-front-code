@@ -1,10 +1,10 @@
 const PRODUCTS = [
   { id:1, name:'Wireless Noise-Cancelling Headphones', category:'Electronics', price:199, oldPrice:249, rating:4.8, reviews:124, badge:'New', img:'https://picsum.photos/seed/prod1/600/600', specs:{ Brand:'SoundMax', Battery:'30 hours', Connectivity:'Bluetooth 5.3' }, variants:[ {id:'1-b', attr:{Color:'Black'}, price:199, stock:12}, {id:'1-w', attr:{Color:'White'}, price:209, stock:5} ] },
   { id:2, name:'Smartphone 128GB', category:'Electronics', price:699, rating:4.7, reviews:89, img:'https://picsum.photos/seed/prod2/600/600', specs:{ Brand:'Nova', Display:'6.5" AMOLED' }, variants:[ {id:'2-128', attr:{Storage:'128GB'}, price:699, stock:8}, {id:'2-256', attr:{Storage:'256GB'}, price:799, stock:4} ] },
-  { id:3, name:'Laptop 15" Core i7', category:'Computers', price:1099, oldPrice:1299, rating:4.9, reviews:58, badge:'Bestseller', img:'https://picsum.photos/seed/prod3/600/600', specs:{ Brand:'TechPro', CPU:'Intel Core i7' }, options:{ RAM:['8GB','16GB','32GB'], Storage:['256GB','512GB'], Processor:['Intel i5','Intel i7','Intel i9'] } },
+  { id:3, name:'Laptop 15" Core i7', category:'Computers', price:1099, oldPrice:1299, rating:4.9, reviews:58, badge:'Bestseller', img:'https://picsum.photos/seed/prod3/600/600', specs:{ Brand:'TechPro', CPU:'Intel Core i7' }, options:{ RAM:['8GB','16GB','32GB'], Storage:['256GB','512GB'], Processor:['Intel i5','Intel i7','Intel i9'] }, priceStep:25 },
   { id:4, name:'Mechanical Keyboard', category:'Computers', price:89, rating:4.6, reviews:73, img:'https://picsum.photos/seed/prod4/600/600', specs:{ Brand:'KeyMaster', Switch:'Blue' }, variants:[ {id:'4-bl', attr:{Switch:'Blue'}, price:89, stock:15}, {id:'4-br', attr:{Switch:'Brown'}, price:89, stock:10} ] },
   { id:5, name:'Gaming Mouse', category:'Computers', price:49, rating:4.5, reviews:41, badge:'Sale', img:'https://picsum.photos/seed/prod5/600/600', specs:{ Brand:'PlayGear', DPI:'16000' }, variants:[ {id:'5-b', attr:{Color:'Black'}, price:49, stock:20} ] },
-  { id:6, name:"Men's Casual T-Shirt", category:'Clothing', price:25, rating:4.4, reviews:210, img:'https://picsum.photos/seed/prod6/600/600', specs:{ Brand:'UrbanWear', Fabric:'100% Cotton' }, options:{ Color:['Red','Blue','Black','White'], Size:['M','L','XL'] } },
+  { id:6, name:"Men's Casual T-Shirt", category:'Clothing', price:25, rating:4.4, reviews:210, img:'https://picsum.photos/seed/prod6/600/600', specs:{ Brand:'UrbanWear', Fabric:'100% Cotton' }, options:{ Color:['Red','Blue','Black','White'], Size:['M','L','XL'] }, priceStep:2 },
   { id:7, name:"Women's Denim Jacket", category:'Clothing', price:79, oldPrice:99, rating:4.7, reviews:67, img:'https://picsum.photos/seed/prod7/600/600', specs:{ Brand:'DenimCo', Fabric:'Denim' }, variants:[ {id:'7-b-s', attr:{Color:'Blue', Size:'S'}, price:79, stock:5}, {id:'7-b-m', attr:{Color:'Blue', Size:'M'}, price:79, stock:7}, {id:'7-b-l', attr:{Color:'Blue', Size:'L'}, price:79, stock:2} ] },
   { id:8, name:'Running Sneakers', category:'Clothing', price:110, rating:4.8, reviews:154, badge:'New', img:'https://picsum.photos/seed/prod8/600/600', specs:{ Brand:'Stride', Material:'Mesh & Rubber' }, variants:[ {id:'8-w-8', attr:{Color:'White', Size:'8'}, price:110, stock:4}, {id:'8-w-9', attr:{Color:'White', Size:'9'}, price:110, stock:6}, {id:'8-b-8', attr:{Color:'Black', Size:'8'}, price:110, stock:3} ] },
   { id:9, name:'Organic Apples (1kg)', category:'Grocery', price:4.99, rating:4.9, reviews:312, img:'https://picsum.photos/seed/prod9/600/600', specs:{ Weight:'1kg', Organic:'Yes' }, variants:[ {id:'9-1', attr:{Pack:'1kg'}, price:4.99, stock:50} ] },
@@ -43,10 +43,11 @@ function expandProduct(p) {
   if (p.variants && p.variants.length) return p;
   if (p.options) {
     const combos = cartesian(p.options);
+    const step = p.priceStep || 0;
     p.variants = combos.map((combo, idx) => ({
       id: p.id + '-' + idx,
       attr: combo,
-      price: p.price,
+      price: Math.round((p.price + idx * step) * 100) / 100,
       stock: Math.random() < 0.3 ? 0 : Math.floor(Math.random() * 9) + 1,
     }));
   } else {
