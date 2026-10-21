@@ -53,7 +53,7 @@
           <div class="p-5 space-y-3">
             <template x-for="item in o.items" :key="item.id">
               <div class="flex gap-3 items-center">
-                <img :src="item.img" :alt="item.name" class="w-12 h-12 rounded-lg object-cover" />
+                <img loading="lazy" :src="item.img" :alt="item.name" class="w-12 h-12 rounded-lg object-cover" />
                 <div class="flex-1 min-w-0">
                   <div class="text-sm font-medium truncate" x-text="item.name"></div>
                   <div class="text-xs text-gray-400 truncate" x-show="item.variant && Object.keys(item.variant).length" x-text="Object.entries(item.variant||{}).map(([k,v])=>v).join(' / ')"></div>

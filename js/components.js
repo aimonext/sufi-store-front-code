@@ -9,7 +9,7 @@ function headerTemplate(page) {
     <div class="max-w-7xl mx-auto px-4 py-3 flex items-center gap-3">
       <a href="index.html" class="flex items-center gap-2 font-display text-2xl font-bold text-gray-900 tracking-tight">
         <!-- IMAGE LOGO: uncomment to use an image logo (set src to your logo file) -->
-        <!-- <img src="logo.png" alt="Logo" class="h-8 w-auto object-contain" /> -->
+        <!-- <img loading="lazy" src="logo.png" alt="Logo" class="h-8 w-auto object-contain" /> -->
         <!-- TEXT LOGO: uncomment to use a text logo (uses store name from config) -->
         <span x-text="(typeof config !== 'undefined' && config) ? config.storeName : 'Lumen'">Lumen</span>
       </a>
