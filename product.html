@@ -57,6 +57,23 @@
         </div>
         <p class="mt-5 text-gray-500 leading-relaxed">A beautifully crafted piece designed for everyday use. Made with quality materials and attention to detail.</p>
 
+        <!-- Variant selectors -->
+        <div x-show="product && product.variants && product.variants.length>1" class="mt-6 space-y-4">
+          <template x-for="key in variantKeys" :key="key">
+            <div>
+              <div class="text-sm font-medium text-gray-700 mb-2" x-text="key"></div>
+              <div class="flex flex-wrap gap-2">
+                <template x-for="val in variantValues(key)" :key="val">
+                  <button @click="isOptionAvailable(key,val) && selectAttr(key,val)" :disabled="!isOptionAvailable(key,val)" :class="selectedAttrs[key]===val ? 'bg-gray-900 text-white border-gray-900' : (isOptionAvailable(key,val) ? 'bg-white text-gray-700 border-gray-200 hover:border-gray-400' : 'bg-gray-100 text-gray-400 border-gray-200 cursor-not-allowed line-through')" class="px-4 py-2 rounded-lg border text-sm font-medium transition disabled:opacity-60" x-text="val"></button>
+                </template>
+              </div>
+            </div>
+          </template>
+          <div class="text-sm text-gray-500" x-show="selectedVariant">
+            <span x-text="'Stock: ' + (selectedVariant ? selectedVariant.stock : 0)"></span>
+          </div>
+        </div>
+
         <div class="mt-6 flex items-center gap-4">
           <div class="flex items-center border border-gray-200 rounded-full">
             <button @click="qty>1 && qty--" class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-gray-50">−</button>
@@ -73,6 +90,18 @@
           <div class="flex justify-between"><span>Category</span><span class="text-gray-900" x-text="product.category"></span></div>
           <div class="flex justify-between"><span>Availability</span><span class="text-green-600 font-medium">In stock</span></div>
           <div class="flex justify-between"><span>Shipping</span><span>Free over $50</span></div>
+        </div>
+
+        <div x-show="product.specs" class="mt-6 border-t border-gray-100 pt-6">
+          <h3 class="font-semibold text-gray-900 mb-3">Specifications</h3>
+          <dl class="grid grid-cols-2 gap-x-4 gap-y-3 text-sm">
+            <template x-for="[k,v] in Object.entries(product.specs || {})" :key="k">
+              <div>
+                <dt class="text-gray-500" x-text="k"></dt>
+                <dd class="font-medium text-gray-900" x-text="v"></dd>
+              </div>
+            </template>
+          </dl>
         </div>
       </div>
     </div>
