@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Shop — Store</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="assets/js/tailwindcss.js"></script>
   <script defer src="js/components.js"></script>
   <script defer src="js/app.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -13,14 +13,11 @@
       darkMode: 'class',
       theme: { extend: {
         colors: { brand: { 50:'#f5f7ff',100:'#ebeffe',200:'#d6ddfe',300:'#b3befd',400:'#8a98fc',500:'#6366f1',600:'#4f46e5',700:'#4338ca',800:'#3730a3',900:'#312e81' } },
-        fontFamily: { display: ['"Playfair Display"','serif'], body: ['Inter','sans-serif'] },
+        fontFamily: { display: ['system-ui','sans-serif'], body: ['system-ui','sans-serif'] },
         boxShadow: { soft: '0 10px 40px -10px rgba(0,0,0,0.12)' }
       } }
     }
   </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap&family=Playfair+Display:wght@500;600;700&display=swap&display=swap" rel="stylesheet">
   <style>[x-cloak]{display:none!important} .product-img{transition:transform .6s cubic-bezier(.2,.8,.2,1)} .product-card:hover .product-img{transform:scale(1.08)}</style>
 <link rel="stylesheet" href="theme.css">
 </head>

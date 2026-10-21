@@ -1,10 +1,10 @@
 const PRODUCTS = [
   { id:1, name:'Wireless Noise-Cancelling Headphones', category:'Electronics', price:199, oldPrice:249, rating:4.8, reviews:124, badge:'New', img:'assets/img/prod1_400x400.jpg', specs:{ Brand:'SoundMax', Battery:'30 hours', Connectivity:'Bluetooth 5.3' }, variants:[ {id:'1-b', attr:{Color:'Black'}, price:199, stock:12}, {id:'1-w', attr:{Color:'White'}, price:209, stock:5} ] },
   { id:2, name:'Smartphone 128GB', category:'Electronics', price:699, rating:4.7, reviews:89, img:'assets/img/prod2_400x400.jpg', specs:{ Brand:'Nova', Display:'6.5" AMOLED' }, variants:[ {id:'2-128', attr:{Storage:'128GB'}, price:699, stock:8}, {id:'2-256', attr:{Storage:'256GB'}, price:799, stock:4} ] },
-  { id:3, name:'Laptop 15" Core i7', category:'Computers', price:1099, oldPrice:1299, rating:4.9, reviews:58, badge:'Bestseller', img:'assets/img/prod3_400x400.jpg', specs:{ Brand:'TechPro', CPU:'Intel Core i7' }, options:{ RAM:['8GB','16GB','32GB'], Storage:['256GB','512GB'], Processor:['Intel i5','Intel i7','Intel i9'] }, priceStep:25 },
+  { id:3, name:'Laptop 15" Core i7', category:'Computers', price:1099, oldPrice:1299, rating:4.9, reviews:58, badge:'Bestseller', img:'assets/img/prod3_400x400.jpg', specs:{ Brand:'TechPro', CPU:'Intel Core i7' }, options:{ RAM:['8GB','16GB','32GB'], Storage:['256GB','512GB'], Processor:['Intel i5','Intel i7','Intel i9'] }, priceStep:25, reviewsList:[ {user:'Charlie', rating:5, comment:'Fast and reliable. Battery lasts all day.', date:'Oct 8, 2026'} ], questionsList:[ {q:'Does it support dual monitors?', a:'Yes, via HDMI and USB-C.'} ], faq:[ {q:'What OS is pre-installed?', a:'Windows 11 Home.'}, {q:'Is the RAM upgradeable?', a:'Yes, up to 64GB.'} ], media:[ {type:'image', src:'assets/img/prod3_400x400.jpg'}, {type:'image', src:'assets/img/prod4_400x400.jpg'} ], variantImages:{ Silver:'assets/img/prod4_400x400.jpg', 'Space Gray':'assets/img/prod5_400x400.jpg' } },
   { id:4, name:'Mechanical Keyboard', category:'Computers', price:89, rating:4.6, reviews:73, img:'assets/img/prod4_400x400.jpg', specs:{ Brand:'KeyMaster', Switch:'Blue' }, variants:[ {id:'4-bl', attr:{Switch:'Blue'}, price:89, stock:15}, {id:'4-br', attr:{Switch:'Brown'}, price:89, stock:10} ] },
   { id:5, name:'Gaming Mouse', category:'Computers', price:49, rating:4.5, reviews:41, badge:'Sale', img:'assets/img/prod5_400x400.jpg', specs:{ Brand:'PlayGear', DPI:'16000' }, variants:[ {id:'5-b', attr:{Color:'Black'}, price:49, stock:20} ] },
-  { id:6, name:"Men's Casual T-Shirt", category:'Clothing', price:25, rating:4.4, reviews:210, img:'assets/img/prod6_400x400.jpg', specs:{ Brand:'UrbanWear', Fabric:'100% Cotton' }, options:{ Color:['Red','Blue','Black','White'], Size:['M','L','XL'] }, priceStep:2 },
+  { id:6, name:"Men's Casual T-Shirt", category:'Clothing', price:25, rating:4.4, reviews:210, img:'assets/img/prod6_400x400.jpg', specs:{ Brand:'UrbanWear', Fabric:'100% Cotton' }, options:{ Color:['Red','Blue','Black','White'], Size:['M','L','XL'] }, priceStep:2, reviewsList:[ {user:'Alice', rating:5, comment:'Great fit and fabric. Very comfortable.', date:'Oct 10, 2026'}, {user:'Bob', rating:4, comment:'Good quality, slightly large.', date:'Oct 12, 2026'} ], questionsList:[ {q:'Is this pre-shrunk?', a:'Yes, the fabric is pre-shrunk to minimize shrinkage after washing.'} ], faq:[ {q:'What is the return policy?', a:'30-day easy returns on all items.'}, {q:'How do I wash this?', a:'Machine wash cold, tumble dry low.'} ], media:[ {type:'image', src:'assets/img/prod6_400x400.jpg'}, {type:'video', src:'assets/video/sample.mp4'}, {type:'image', src:'assets/img/prod7_400x400.jpg'} ], variantImages:{ Red:'assets/img/prod7_400x400.jpg', Blue:'assets/img/prod8_400x400.jpg', Black:'assets/img/prod5_400x400.jpg', White:'assets/img/prod12_400x400.jpg' } },
   { id:7, name:"Women's Denim Jacket", category:'Clothing', price:79, oldPrice:99, rating:4.7, reviews:67, img:'assets/img/prod7_400x400.jpg', specs:{ Brand:'DenimCo', Fabric:'Denim' }, variants:[ {id:'7-b-s', attr:{Color:'Blue', Size:'S'}, price:79, stock:5}, {id:'7-b-m', attr:{Color:'Blue', Size:'M'}, price:79, stock:7}, {id:'7-b-l', attr:{Color:'Blue', Size:'L'}, price:79, stock:2} ] },
   { id:8, name:'Running Sneakers', category:'Clothing', price:110, rating:4.8, reviews:154, badge:'New', img:'assets/img/prod8_400x400.jpg', specs:{ Brand:'Stride', Material:'Mesh & Rubber' }, variants:[ {id:'8-w-8', attr:{Color:'White', Size:'8'}, price:110, stock:4}, {id:'8-w-9', attr:{Color:'White', Size:'9'}, price:110, stock:6}, {id:'8-b-8', attr:{Color:'Black', Size:'8'}, price:110, stock:3} ] },
   { id:9, name:'Organic Apples (1kg)', category:'Grocery', price:4.99, rating:4.9, reviews:312, img:'assets/img/prod9_400x400.jpg', specs:{ Weight:'1kg', Organic:'Yes' }, variants:[ {id:'9-1', attr:{Pack:'1kg'}, price:4.99, stock:50} ] },
@@ -49,6 +49,7 @@ function expandProduct(p) {
       attr: combo,
       price: Math.round((p.price + idx * step) * 100) / 100,
       stock: Math.random() < 0.3 ? 0 : Math.floor(Math.random() * 9) + 1,
+      image: (p.variantImages && combo.Color) ? p.variantImages[combo.Color] : (p.variantImages && combo.color ? p.variantImages[combo.color] : undefined),
     }));
   } else {
     p.variants = [{ id: p.id + '-default', attr: {}, price: p.price, stock: 99 }];
@@ -253,20 +254,60 @@ document.addEventListener('alpine:init', () => {
     return {
       product,
       qty: 1,
+      mediaIndex: 0,
       selectedAttrs: firstV ? { ...firstV.attr } : {},
       cart: load('cart', []),
       wishlist: load('wishlist', []),
       dark: localStorage.getItem('dark') === 'true',
+      mobileOpen: false,
+      userOpen: false,
+      query: '',
+      activeTab: 'reviews',
+      reviews: [],
+      newReview: { rating: 5, comment: '' },
+      questions: [],
+      newQuestion: '',
+      faq: [],
       init(){
         if(this.dark) document.documentElement.classList.add('dark');
         this.$watch('dark', v => { localStorage.setItem('dark', v); document.documentElement.classList.toggle('dark', v); });
         this.$watch('cart', v => save('cart', v));
         this.$watch('wishlist', v => save('wishlist', v));
         if(this.product) document.title = this.product.name + ' — Store';
+        const storedReviews = load('reviews_' + this.product.id, []);
+        this.reviews = [...(this.product.reviewsList || []), ...storedReviews];
+        const storedQs = load('questions_' + this.product.id, []);
+        this.questions = [...(this.product.questionsList || []), ...storedQs];
+        this.faq = this.product.faq || [];
+      },
+      addReview(){
+        if(!this.newReview.comment.trim()) return;
+        const r = { user:'You', rating: parseInt(this.newReview.rating), comment: this.newReview.comment, date: new Date().toLocaleDateString() };
+        this.reviews.unshift(r);
+        const stored = load('reviews_' + this.product.id, []);
+        stored.unshift(r);
+        save('reviews_' + this.product.id, stored);
+        this.newReview = { rating: 5, comment: '' };
+      },
+      askQuestion(){
+        if(!this.newQuestion.trim()) return;
+        const q = { q: this.newQuestion, a: 'Thanks for your question! We\'ll answer soon.' };
+        this.questions.unshift(q);
+        const stored = load('questions_' + this.product.id, []);
+        stored.unshift(q);
+        save('questions_' + this.product.id, stored);
+        this.newQuestion = '';
       },
       get selectedVariant(){
         if(!this.product || !this.product.variants) return null;
         return this.product.variants.find(v => Object.keys(this.selectedAttrs).every(k => v.attr[k]===this.selectedAttrs[k])) || this.product.variants[0];
+      },
+      get mediaList(){
+        if(!this.product) return [];
+        const list = (this.product.media && this.product.media.length) ? [...this.product.media] : [{ type:'image', src: this.product.img }];
+        const v = this.selectedVariant;
+        if(v && v.image && !list.some(m => m.src === v.image)) list.push({ type:'image', src: v.image });
+        return list;
       },
       get variantKeys(){
         if(!this.product || !this.product.variants) return [];
@@ -283,6 +324,13 @@ document.addEventListener('alpine:init', () => {
         this.selectedAttrs = { ...this.selectedAttrs, [key]: value };
         const v = this.selectedVariant;
         if(v) this.selectedAttrs = { ...v.attr };
+        const list = this.mediaList;
+        if(v && v.image){
+          const idx = list.findIndex(m => m.src === v.image);
+          this.mediaIndex = idx >= 0 ? idx : 0;
+        } else {
+          this.mediaIndex = 0;
+        }
       },
       isOptionAvailable(key, value){
         if(!this.product || !this.product.variants) return true;
@@ -345,6 +393,9 @@ document.addEventListener('alpine:init', () => {
     cart: load('cart', []),
     dark: localStorage.getItem('dark') === 'true',
     mobileOpen: false,
+    userOpen: false,
+    query: '',
+    mobileOpen: false,
     query: '',
     userOpen: false,
     init(){
@@ -370,6 +421,9 @@ document.addEventListener('alpine:init', () => {
   Alpine.data('contactPage', () => ({
     cart: load('cart', []),
     dark: localStorage.getItem('dark') === 'true',
+    mobileOpen: false,
+    userOpen: false,
+    query: '',
     mobileOpen: false,
     query: '',
     userOpen: false,
