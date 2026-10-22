@@ -112,7 +112,7 @@
                 {#if m.type === 'video'}
                   <video src={m.src} controls class="w-full h-full object-cover"></video>
                 {:else}
-                  <img src={m.src} alt={product.name} class="w-full h-full object-cover" />
+                  <img loading="lazy" src={m.src} alt={product.name} class="w-full h-full object-cover" />
                 {/if}
               </div>
             {/if}
@@ -129,7 +129,7 @@
                 {#if m.type === 'video'}
                   <div class="w-full h-full flex items-center justify-center text-gray-500 text-xs">▶ Video</div>
                 {:else}
-                  <img src={m.src} alt={product.name} class="w-full h-full object-cover" />
+                  <img loading="lazy" src={m.src} alt={product.name} class="w-full h-full object-cover" />
                 {/if}
               </button>
             {/each}

@@ -80,7 +80,7 @@
         <div class="space-y-3 max-h-64 overflow-y-auto">
           {#each c as item}
             <div class="flex gap-3 items-center">
-              <img src={item.img} alt={item.name} class="w-12 h-12 rounded-lg object-cover" />
+              <img loading="lazy" src={item.img} alt={item.name} class="w-12 h-12 rounded-lg object-cover" />
               <div class="flex-1 min-w-0">
                 <div class="text-sm font-medium truncate dark:text-white">{item.name}</div>
                 <div class="text-xs text-gray-500">×{item.qty}</div>

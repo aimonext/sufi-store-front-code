@@ -29,7 +29,7 @@
           <div class="p-5 space-y-3">
             {#each o.items as item}
               <div class="flex gap-3 items-center">
-                <img src={item.img} alt={item.name} class="w-12 h-12 rounded-lg object-cover" />
+                <img loading="lazy" src={item.img} alt={item.name} class="w-12 h-12 rounded-lg object-cover" />
                 <div class="flex-1 min-w-0">
                   <div class="text-sm font-medium truncate dark:text-white">{item.name}</div>
                   {#if item.variant && Object.keys(item.variant).length}

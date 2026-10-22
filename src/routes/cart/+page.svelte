@@ -19,7 +19,7 @@
         {#each c as item}
           <div class="bg-white rounded-2xl border border-gray-100 p-4 flex flex-col sm:flex-row gap-3 sm:gap-4 sm:items-center shadow-sm dark:bg-gray-800 dark:border-gray-700">
             <div class="flex gap-3 items-center">
-              <img src={item.img} alt={item.name} class="w-16 h-16 sm:w-20 sm:h-20 rounded-xl object-cover flex-shrink-0" />
+              <img loading="lazy" src={item.img} alt={item.name} class="w-16 h-16 sm:w-20 sm:h-20 rounded-xl object-cover flex-shrink-0" />
               <div class="flex-1 min-w-0">
                 <div class="font-medium text-gray-900 dark:text-white">{item.name}</div>
                 {#if item.variant && Object.keys(item.variant).length}
