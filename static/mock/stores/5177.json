@@ -184,6 +184,6 @@
     "phone": "+1 (555) 012-3456",
     "address": "123 Market St, San Francisco, CA"
   },
-  "privacy": "# Privacy Policy\n\nWe respect your privacy. This policy explains how we collect, use, and protect your personal information when you shop with us.\n\n## Information we collect\n\nWe collect information you provide at checkout (name, email, address) and browsing data to improve your experience.\n\n## How we use it\n\nYour information is used to process orders, provide support, and send updates you opt into. We never sell your data.\n\n## Cookies\n\nWe use cookies to remember your cart and preferences. You can disable cookies in your browser settings.\n\n## Contact\n\nQuestions? Reach us at privacy@lumen.store.",
-  "terms": "# Terms & Conditions\n\nBy using this store, you agree to the following terms.\n\n## Orders\n\nAll orders are subject to availability. We reserve the right to cancel orders in case of pricing errors.\n\n## Shipping\n\nShipping times are estimates and may vary. Free shipping applies to orders over $50.\n\n## Returns\n\nItems may be returned within 30 days in original condition. Refunds are issued to the original payment method.\n\n## Liability\n\nWe are not liable for indirect or consequential damages arising from use of our products."
+  "privacy": "# Privacy Policy\n\nFreshMart respects your privacy. We collect only what's needed to deliver your groceries.",
+  "terms": "# Terms & Conditions\n\nBy shopping at FreshMart, you agree to our grocery delivery terms."
 }
