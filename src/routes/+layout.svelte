@@ -25,6 +25,15 @@
 
 <svelte:head>
   <title>{data?.store?.storeName || 'Store'} — Shop</title>
+  <meta name="description" content={data?.store?.heroSubtitle || 'Online store'} />
+  <meta property="og:title" content={data?.store?.storeName || 'Store'} />
+  <meta property="og:description" content={data?.store?.heroSubtitle || 'Online store'} />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="robots" content="index, follow" />
+  <script type="application/ld+json">
+    {JSON.stringify({ '@context': 'https://schema.org', '@type': 'Organization', name: data?.store?.storeName || 'Store' })}
+  </script>
   {#if data?.store?.theme?.brand}
     <style>
       :root {
