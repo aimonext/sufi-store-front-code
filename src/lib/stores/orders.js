@@ -3,9 +3,9 @@ import { browser } from '$app/environment';
 
 function load(key, fallback) {
   if (!browser) return fallback;
-  try { return JSON.parse(localStorage.getItem(key) || JSON.stringify(fallback)); } catch { return fallback; }
+  try { return JSON.parse(localStorage.getItem(key + '_' + (browser ? location.host : 'ssr')) || JSON.stringify(fallback)); } catch { return fallback; }
 }
-function save(key, val) { if (browser) localStorage.setItem(key, JSON.stringify(val)); }
+function save(key, val) { if (browser) localStorage.setItem(key + '_' + (browser ? location.host : 'ssr'), JSON.stringify(val)); }
 
 function createOrders() {
   let orders = load('orders', []);

@@ -4,7 +4,7 @@ import { dev } from '$app/environment';
 
 function loadCached() {
   if (!browser || dev) return null;
-  try { return JSON.parse(localStorage.getItem('storeConfig') || 'null'); } catch { return null; }
+  try { return JSON.parse(localStorage.getItem('storeConfig_' + (browser ? location.host : 'ssr')) || 'null'); } catch { return null; }
 }
 
 function create() {
@@ -16,7 +16,7 @@ function create() {
         if (!res.ok) return;
         const data = await res.json();
         set(data);
-        if (!dev) localStorage.setItem('storeConfig', JSON.stringify(data));
+        if (!dev) localStorage.setItem('storeConfig_' + (browser ? location.host : 'ssr'), JSON.stringify(data));
       } catch (e) { console.error(e); }
     })();
   }
