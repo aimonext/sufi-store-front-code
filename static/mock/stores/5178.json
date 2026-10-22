@@ -1,0 +1,460 @@
+{
+  "slug": "electronics",
+  "storeName": "TechHub",
+  "domain": "localhost",
+  "heroEyebrow": "Spring 2026",
+  "heroTitle": "Latest electronics & computers",
+  "heroSubtitle": "Gadgets, laptops, and accessories.",
+  "categories": [
+    {
+      "name": "Electronics",
+      "img": "/img/catelec_400x400.jpg"
+    },
+    {
+      "name": "Computers",
+      "img": "/img/catcomp_400x400.jpg"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Wireless Noise-Cancelling Headphones",
+      "category": "Electronics",
+      "price": 199,
+      "oldPrice": 249,
+      "rating": 4.8,
+      "reviews": 124,
+      "badge": "New",
+      "img": "/img/prod1_400x400.jpg",
+      "specs": {
+        "Brand": "SoundMax",
+        "Battery": "30 hours",
+        "Connectivity": "Bluetooth 5.3"
+      },
+      "variants": [
+        {
+          "id": "1-b",
+          "attr": {
+            "Color": "Black"
+          },
+          "price": 199,
+          "stock": 12
+        },
+        {
+          "id": "1-w",
+          "attr": {
+            "Color": "White"
+          },
+          "price": 209,
+          "stock": 5
+        }
+      ],
+      "media": [
+        {
+          "type": "image",
+          "src": "/img/prod1_400x400.jpg"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Smartphone 128GB",
+      "category": "Electronics",
+      "price": 699,
+      "rating": 4.7,
+      "reviews": 89,
+      "img": "/img/prod2_400x400.jpg",
+      "specs": {
+        "Brand": "Nova",
+        "Display": "6.5\" AMOLED"
+      },
+      "variants": [
+        {
+          "id": "2-128",
+          "attr": {
+            "Storage": "128GB"
+          },
+          "price": 699,
+          "stock": 8
+        },
+        {
+          "id": "2-256",
+          "attr": {
+            "Storage": "256GB"
+          },
+          "price": 799,
+          "stock": 4
+        }
+      ],
+      "media": [
+        {
+          "type": "image",
+          "src": "/img/prod2_400x400.jpg"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Laptop 15\" Core i7",
+      "category": "Computers",
+      "price": 1099,
+      "oldPrice": 1299,
+      "rating": 4.9,
+      "reviews": 58,
+      "badge": "Bestseller",
+      "img": "/img/prod3_400x400.jpg",
+      "specs": {
+        "Brand": "TechPro",
+        "CPU": "Intel Core i7"
+      },
+      "options": {
+        "RAM": [
+          "8GB",
+          "16GB",
+          "32GB"
+        ],
+        "Storage": [
+          "256GB",
+          "512GB"
+        ],
+        "Processor": [
+          "Intel i5",
+          "Intel i7",
+          "Intel i9"
+        ]
+      },
+      "priceStep": 25,
+      "reviewsList": [
+        {
+          "user": "Charlie",
+          "rating": 5,
+          "comment": "Fast and reliable. Battery lasts all day.",
+          "date": "Oct 8, 2026"
+        }
+      ],
+      "questionsList": [
+        {
+          "q": "Does it support dual monitors?",
+          "a": "Yes, via HDMI and USB-C."
+        }
+      ],
+      "faq": [
+        {
+          "q": "What OS is pre-installed?",
+          "a": "Windows 11 Home."
+        },
+        {
+          "q": "Is the RAM upgradeable?",
+          "a": "Yes, up to 64GB."
+        }
+      ],
+      "media": [
+        {
+          "type": "image",
+          "src": "/img/prod3_400x400.jpg"
+        },
+        {
+          "type": "image",
+          "src": "/img/prod4_400x400.jpg"
+        }
+      ],
+      "variantImages": {
+        "8GB": "/img/prod4_400x400.jpg"
+      },
+      "variants": [
+        {
+          "id": "3-0",
+          "attr": {
+            "RAM": "8GB",
+            "Storage": "256GB",
+            "Processor": "Intel i5"
+          },
+          "price": 1099,
+          "stock": 1
+        },
+        {
+          "id": "3-1",
+          "attr": {
+            "RAM": "8GB",
+            "Storage": "256GB",
+            "Processor": "Intel i7"
+          },
+          "price": 1124,
+          "stock": 6
+        },
+        {
+          "id": "3-2",
+          "attr": {
+            "RAM": "8GB",
+            "Storage": "256GB",
+            "Processor": "Intel i9"
+          },
+          "price": 1149,
+          "stock": 1
+        },
+        {
+          "id": "3-3",
+          "attr": {
+            "RAM": "8GB",
+            "Storage": "512GB",
+            "Processor": "Intel i5"
+          },
+          "price": 1174,
+          "stock": 0
+        },
+        {
+          "id": "3-4",
+          "attr": {
+            "RAM": "8GB",
+            "Storage": "512GB",
+            "Processor": "Intel i7"
+          },
+          "price": 1199,
+          "stock": 0
+        },
+        {
+          "id": "3-5",
+          "attr": {
+            "RAM": "8GB",
+            "Storage": "512GB",
+            "Processor": "Intel i9"
+          },
+          "price": 1224,
+          "stock": 5
+        },
+        {
+          "id": "3-6",
+          "attr": {
+            "RAM": "16GB",
+            "Storage": "256GB",
+            "Processor": "Intel i5"
+          },
+          "price": 1249,
+          "stock": 0
+        },
+        {
+          "id": "3-7",
+          "attr": {
+            "RAM": "16GB",
+            "Storage": "256GB",
+            "Processor": "Intel i7"
+          },
+          "price": 1274,
+          "stock": 2
+        },
+        {
+          "id": "3-8",
+          "attr": {
+            "RAM": "16GB",
+            "Storage": "256GB",
+            "Processor": "Intel i9"
+          },
+          "price": 1299,
+          "stock": 2
+        },
+        {
+          "id": "3-9",
+          "attr": {
+            "RAM": "16GB",
+            "Storage": "512GB",
+            "Processor": "Intel i5"
+          },
+          "price": 1324,
+          "stock": 7
+        },
+        {
+          "id": "3-10",
+          "attr": {
+            "RAM": "16GB",
+            "Storage": "512GB",
+            "Processor": "Intel i7"
+          },
+          "price": 1349,
+          "stock": 9
+        },
+        {
+          "id": "3-11",
+          "attr": {
+            "RAM": "16GB",
+            "Storage": "512GB",
+            "Processor": "Intel i9"
+          },
+          "price": 1374,
+          "stock": 2
+        },
+        {
+          "id": "3-12",
+          "attr": {
+            "RAM": "32GB",
+            "Storage": "256GB",
+            "Processor": "Intel i5"
+          },
+          "price": 1399,
+          "stock": 7
+        },
+        {
+          "id": "3-13",
+          "attr": {
+            "RAM": "32GB",
+            "Storage": "256GB",
+            "Processor": "Intel i7"
+          },
+          "price": 1424,
+          "stock": 2
+        },
+        {
+          "id": "3-14",
+          "attr": {
+            "RAM": "32GB",
+            "Storage": "256GB",
+            "Processor": "Intel i9"
+          },
+          "price": 1449,
+          "stock": 7
+        },
+        {
+          "id": "3-15",
+          "attr": {
+            "RAM": "32GB",
+            "Storage": "512GB",
+            "Processor": "Intel i5"
+          },
+          "price": 1474,
+          "stock": 0
+        },
+        {
+          "id": "3-16",
+          "attr": {
+            "RAM": "32GB",
+            "Storage": "512GB",
+            "Processor": "Intel i7"
+          },
+          "price": 1499,
+          "stock": 8
+        },
+        {
+          "id": "3-17",
+          "attr": {
+            "RAM": "32GB",
+            "Storage": "512GB",
+            "Processor": "Intel i9"
+          },
+          "price": 1524,
+          "stock": 9
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Mechanical Keyboard",
+      "category": "Computers",
+      "price": 89,
+      "rating": 4.6,
+      "reviews": 73,
+      "img": "/img/prod4_400x400.jpg",
+      "specs": {
+        "Brand": "KeyMaster",
+        "Switch": "Blue"
+      },
+      "variants": [
+        {
+          "id": "4-bl",
+          "attr": {
+            "Switch": "Blue"
+          },
+          "price": 89,
+          "stock": 15
+        },
+        {
+          "id": "4-br",
+          "attr": {
+            "Switch": "Brown"
+          },
+          "price": 89,
+          "stock": 10
+        }
+      ],
+      "media": [
+        {
+          "type": "image",
+          "src": "/img/prod4_400x400.jpg"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Gaming Mouse",
+      "category": "Computers",
+      "price": 49,
+      "rating": 4.5,
+      "reviews": 41,
+      "badge": "Sale",
+      "img": "/img/prod5_400x400.jpg",
+      "specs": {
+        "Brand": "PlayGear",
+        "DPI": "16000"
+      },
+      "variants": [
+        {
+          "id": "5-b",
+          "attr": {
+            "Color": "Black"
+          },
+          "price": 49,
+          "stock": 20
+        }
+      ],
+      "media": [
+        {
+          "type": "image",
+          "src": "/img/prod5_400x400.jpg"
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "name": "Bluetooth Speaker",
+      "category": "Electronics",
+      "price": 59,
+      "oldPrice": 79,
+      "rating": 4.7,
+      "reviews": 134,
+      "img": "/img/prod16_400x400.jpg",
+      "specs": {
+        "Battery": "12 hours",
+        "Waterproof": "IPX7"
+      },
+      "variants": [
+        {
+          "id": "16-b",
+          "attr": {
+            "Color": "Black"
+          },
+          "price": 59,
+          "stock": 17
+        },
+        {
+          "id": "16-r",
+          "attr": {
+            "Color": "Red"
+          },
+          "price": 59,
+          "stock": 6
+        }
+      ],
+      "media": [
+        {
+          "type": "image",
+          "src": "/img/prod16_400x400.jpg"
+        }
+      ]
+    }
+  ],
+  "contact": {
+    "email": "hello@lumen.store",
+    "phone": "+1 (555) 012-3456",
+    "address": "123 Market St, San Francisco, CA"
+  },
+  "privacy": "# Privacy Policy\n\nWe respect your privacy. This policy explains how we collect, use, and protect your personal information when you shop with us.\n\n## Information we collect\n\nWe collect information you provide at checkout (name, email, address) and browsing data to improve your experience.\n\n## How we use it\n\nYour information is used to process orders, provide support, and send updates you opt into. We never sell your data.\n\n## Cookies\n\nWe use cookies to remember your cart and preferences. You can disable cookies in your browser settings.\n\n## Contact\n\nQuestions? Reach us at privacy@lumen.store.",
+  "terms": "# Terms & Conditions\n\nBy using this store, you agree to the following terms.\n\n## Orders\n\nAll orders are subject to availability. We reserve the right to cancel orders in case of pricing errors.\n\n## Shipping\n\nShipping times are estimates and may vary. Free shipping applies to orders over $50.\n\n## Returns\n\nItems may be returned within 30 days in original condition. Refunds are issued to the original payment method.\n\n## Liability\n\nWe are not liable for indirect or consequential damages arising from use of our products."
+}

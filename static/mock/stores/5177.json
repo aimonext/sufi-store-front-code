@@ -1,0 +1,189 @@
+{
+  "slug": "grocery",
+  "storeName": "FreshMart",
+  "domain": "localhost",
+  "heroEyebrow": "Spring 2026",
+  "heroTitle": "Fresh groceries delivered",
+  "heroSubtitle": "Farm-fresh produce and pantry staples.",
+  "categories": [
+    {
+      "name": "Grocery",
+      "img": "/img/catgro_400x400.jpg"
+    },
+    {
+      "name": "Home",
+      "img": "/img/cathome_400x400.jpg"
+    }
+  ],
+  "products": [
+    {
+      "id": 9,
+      "name": "Organic Apples (1kg)",
+      "category": "Grocery",
+      "price": 4.99,
+      "rating": 4.9,
+      "reviews": 312,
+      "img": "/img/prod9_400x400.jpg",
+      "specs": {
+        "Weight": "1kg",
+        "Organic": "Yes"
+      },
+      "variants": [
+        {
+          "id": "9-1",
+          "attr": {
+            "Pack": "1kg"
+          },
+          "price": 4.99,
+          "stock": 50
+        }
+      ],
+      "media": [
+        {
+          "type": "image",
+          "src": "/img/prod9_400x400.jpg"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Whole Wheat Bread",
+      "category": "Grocery",
+      "price": 3.49,
+      "rating": 4.6,
+      "reviews": 98,
+      "img": "/img/prod10_400x400.jpg",
+      "specs": {
+        "Weight": "500g"
+      },
+      "variants": [
+        {
+          "id": "10-1",
+          "attr": {
+            "Pack": "500g"
+          },
+          "price": 3.49,
+          "stock": 40
+        }
+      ],
+      "media": [
+        {
+          "type": "image",
+          "src": "/img/prod10_400x400.jpg"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "name": "Olive Oil 1L",
+      "category": "Grocery",
+      "price": 12.99,
+      "oldPrice": 15.99,
+      "rating": 4.8,
+      "reviews": 143,
+      "badge": "Sale",
+      "img": "/img/prod11_400x400.jpg",
+      "specs": {
+        "Volume": "1L",
+        "Type": "Extra Virgin"
+      },
+      "variants": [
+        {
+          "id": "11-1",
+          "attr": {
+            "Volume": "1L"
+          },
+          "price": 12.99,
+          "stock": 25
+        }
+      ],
+      "media": [
+        {
+          "type": "image",
+          "src": "/img/prod11_400x400.jpg"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Stainless Steel Water Bottle",
+      "category": "Home",
+      "price": 24,
+      "rating": 4.7,
+      "reviews": 88,
+      "img": "/img/prod12_400x400.jpg",
+      "specs": {
+        "Capacity": "750ml",
+        "Material": "Stainless Steel"
+      },
+      "variants": [
+        {
+          "id": "12-s",
+          "attr": {
+            "Color": "Silver"
+          },
+          "price": 24,
+          "stock": 18
+        },
+        {
+          "id": "12-b",
+          "attr": {
+            "Color": "Black"
+          },
+          "price": 24,
+          "stock": 12
+        }
+      ],
+      "media": [
+        {
+          "type": "image",
+          "src": "/img/prod12_400x400.jpg"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "name": "LED Desk Lamp",
+      "category": "Home",
+      "price": 39,
+      "rating": 4.5,
+      "reviews": 56,
+      "img": "/img/prod13_400x400.jpg",
+      "specs": {
+        "Power": "12W",
+        "Brightness": "5 levels"
+      },
+      "variants": [
+        {
+          "id": "13-w",
+          "attr": {
+            "Color": "White"
+          },
+          "price": 39,
+          "stock": 14
+        },
+        {
+          "id": "13-b",
+          "attr": {
+            "Color": "Black"
+          },
+          "price": 39,
+          "stock": 9
+        }
+      ],
+      "media": [
+        {
+          "type": "image",
+          "src": "/img/prod13_400x400.jpg"
+        }
+      ]
+    }
+  ],
+  "contact": {
+    "email": "hello@lumen.store",
+    "phone": "+1 (555) 012-3456",
+    "address": "123 Market St, San Francisco, CA"
+  },
+  "privacy": "# Privacy Policy\n\nWe respect your privacy. This policy explains how we collect, use, and protect your personal information when you shop with us.\n\n## Information we collect\n\nWe collect information you provide at checkout (name, email, address) and browsing data to improve your experience.\n\n## How we use it\n\nYour information is used to process orders, provide support, and send updates you opt into. We never sell your data.\n\n## Cookies\n\nWe use cookies to remember your cart and preferences. You can disable cookies in your browser settings.\n\n## Contact\n\nQuestions? Reach us at privacy@lumen.store.",
+  "terms": "# Terms & Conditions\n\nBy using this store, you agree to the following terms.\n\n## Orders\n\nAll orders are subject to availability. We reserve the right to cancel orders in case of pricing errors.\n\n## Shipping\n\nShipping times are estimates and may vary. Free shipping applies to orders over $50.\n\n## Returns\n\nItems may be returned within 30 days in original condition. Refunds are issued to the original payment method.\n\n## Liability\n\nWe are not liable for indirect or consequential damages arising from use of our products."
+}
