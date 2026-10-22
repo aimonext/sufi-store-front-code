@@ -9,9 +9,26 @@
 	<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100" data-sveltekit-preload-data="hover">
 		<div id="splash" style="position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:#f9fafb;">
 			<div style="text-align:center;">
-				<div style="font-size:2rem;font-weight:700;color:#111;">Loading...</div>
+				<div id="splash-name" style="font-size:2rem;font-weight:700;color:#111;">Loading...</div>
+				<div style="margin-top:0.5rem;color:#666;font-size:0.9rem;">Please wait</div>
 			</div>
 		</div>
+		<script>
+			(async () => {
+				try {
+					const res = await fetch('/api/store');
+					if (res.ok) {
+						const data = await res.json();
+						const el = document.getElementById('splash-name');
+						if (el && data.storeName) el.textContent = data.storeName;
+						if (data.theme && data.theme.brand && data.theme.brand[600]) {
+							document.getElementById('splash').style.background = data.theme.brand[50] || '#f9fafb';
+							document.getElementById('splash-name').style.color = data.theme.brand[900] || '#111';
+						}
+					}
+				} catch (e) {}
+			})();
+		</script>
 		<div style="display: contents">%sveltekit.body%</div>
 	</body>
 </html>
