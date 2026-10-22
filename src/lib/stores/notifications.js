@@ -13,7 +13,7 @@ function createNotifications() {
   if (browser) {
     (async () => {
       try {
-        const res = await fetch('/api/notifications');
+        const res = await fetch((import.meta.env.PUBLIC_API_BASE || '') + '/api/notifications');
         if (!res.ok) return;
         const data = await res.json();
         const cached = load('notifications', []);

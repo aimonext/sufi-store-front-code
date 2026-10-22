@@ -25,7 +25,7 @@ function create() {
     });
     (async () => {
       try {
-        const res = await fetch('/api/store');
+        const res = await fetch((import.meta.env.PUBLIC_API_BASE || '') + '/api/store');
         if (!res.ok) return;
         const data = await res.json();
         set(data);
