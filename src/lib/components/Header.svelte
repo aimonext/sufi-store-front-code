@@ -43,7 +43,11 @@
 <header class="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-gray-200/60 dark:bg-gray-900/80 dark:border-gray-700">
   <div class="max-w-7xl mx-auto px-4 py-3 flex items-center gap-3">
     <a href="/" class="flex items-center gap-2 font-display text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-      {store?.storeName || $storeConfig?.storeName || 'Lumen'}
+      {#if store?.logo || $storeConfig?.logo}
+        <img src={store?.logo || $storeConfig?.logo} alt={store?.storeName || $storeConfig?.storeName || 'Logo'} class="h-8 w-auto object-contain" />
+      {:else}
+        {store?.storeName || $storeConfig?.storeName || 'Lumen'}
+      {/if}
     </a>
     <div class="flex-1"></div>
     <div class="relative hidden md:block">
