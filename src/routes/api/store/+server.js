@@ -1,8 +1,10 @@
 import { json } from '@sveltejs/kit';
-import { getStoreByHost } from '#lib/mock/stores.js';
+import { readFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
 
-export function GET({ request, url }) {
-  const host = request.headers.get('host') || 'localhost';
-  const store = getStoreByHost(host);
-  return json(store);
+export async function GET({ request }) {
+  const host = (request.headers.get('host') || 'localhost').split(':')[0].toLowerCase();
+  const file = host === 'store1.com' ? 'store1.com.json' : 'localhost.json';
+  const raw = await readFile(resolve('static/mock/stores', file), 'utf-8');
+  return json(JSON.parse(raw));
 }

@@ -1,0 +1,216 @@
+{
+  "slug": "store1",
+  "storeName": "Store One",
+  "domain": "store1.com",
+  "heroEyebrow": "Welcome",
+  "heroTitle": "Store One Collection",
+  "heroSubtitle": "Quality products for everyone.",
+  "categories": [
+    {
+      "name": "Electronics",
+      "img": "/img/catelec_400x400.jpg"
+    },
+    {
+      "name": "Home",
+      "img": "/img/cathome_400x400.jpg"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Wireless Noise-Cancelling Headphones",
+      "category": "Electronics",
+      "price": 199,
+      "oldPrice": 249,
+      "rating": 4.8,
+      "reviews": 124,
+      "badge": "New",
+      "img": "/img/prod1_400x400.jpg",
+      "specs": {
+        "Brand": "SoundMax",
+        "Battery": "30 hours",
+        "Connectivity": "Bluetooth 5.3"
+      },
+      "variants": [
+        {
+          "id": "1-b",
+          "attr": {
+            "Color": "Black"
+          },
+          "price": 199,
+          "stock": 12
+        },
+        {
+          "id": "1-w",
+          "attr": {
+            "Color": "White"
+          },
+          "price": 209,
+          "stock": 5
+        }
+      ],
+      "media": [
+        {
+          "type": "image",
+          "src": "/img/prod1_400x400.jpg"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Smartphone 128GB",
+      "category": "Electronics",
+      "price": 699,
+      "rating": 4.7,
+      "reviews": 89,
+      "img": "/img/prod2_400x400.jpg",
+      "specs": {
+        "Brand": "Nova",
+        "Display": "6.5\" AMOLED"
+      },
+      "variants": [
+        {
+          "id": "2-128",
+          "attr": {
+            "Storage": "128GB"
+          },
+          "price": 699,
+          "stock": 8
+        },
+        {
+          "id": "2-256",
+          "attr": {
+            "Storage": "256GB"
+          },
+          "price": 799,
+          "stock": 4
+        }
+      ],
+      "media": [
+        {
+          "type": "image",
+          "src": "/img/prod2_400x400.jpg"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "name": "Stainless Steel Water Bottle",
+      "category": "Home",
+      "price": 24,
+      "rating": 4.7,
+      "reviews": 88,
+      "img": "/img/prod12_400x400.jpg",
+      "specs": {
+        "Capacity": "750ml",
+        "Material": "Stainless Steel"
+      },
+      "variants": [
+        {
+          "id": "12-s",
+          "attr": {
+            "Color": "Silver"
+          },
+          "price": 24,
+          "stock": 18
+        },
+        {
+          "id": "12-b",
+          "attr": {
+            "Color": "Black"
+          },
+          "price": 24,
+          "stock": 12
+        }
+      ],
+      "media": [
+        {
+          "type": "image",
+          "src": "/img/prod12_400x400.jpg"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "name": "LED Desk Lamp",
+      "category": "Home",
+      "price": 39,
+      "rating": 4.5,
+      "reviews": 56,
+      "img": "/img/prod13_400x400.jpg",
+      "specs": {
+        "Power": "12W",
+        "Brightness": "5 levels"
+      },
+      "variants": [
+        {
+          "id": "13-w",
+          "attr": {
+            "Color": "White"
+          },
+          "price": 39,
+          "stock": 14
+        },
+        {
+          "id": "13-b",
+          "attr": {
+            "Color": "Black"
+          },
+          "price": 39,
+          "stock": 9
+        }
+      ],
+      "media": [
+        {
+          "type": "image",
+          "src": "/img/prod13_400x400.jpg"
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "name": "Bluetooth Speaker",
+      "category": "Electronics",
+      "price": 59,
+      "oldPrice": 79,
+      "rating": 4.7,
+      "reviews": 134,
+      "img": "/img/prod16_400x400.jpg",
+      "specs": {
+        "Battery": "12 hours",
+        "Waterproof": "IPX7"
+      },
+      "variants": [
+        {
+          "id": "16-b",
+          "attr": {
+            "Color": "Black"
+          },
+          "price": 59,
+          "stock": 17
+        },
+        {
+          "id": "16-r",
+          "attr": {
+            "Color": "Red"
+          },
+          "price": 59,
+          "stock": 6
+        }
+      ],
+      "media": [
+        {
+          "type": "image",
+          "src": "/img/prod16_400x400.jpg"
+        }
+      ]
+    }
+  ],
+  "contact": {
+    "email": "hello@store1.com",
+    "phone": "+1 (555) 999-0000",
+    "address": "456 Commerce Ave, New York, NY"
+  },
+  "privacy": "# Privacy Policy\\n\\nWelcome to Store One. We respect your privacy.",
+  "terms": "# Terms & Conditions\\n\\nBy using Store One, you agree to our terms."
+}
