@@ -10,7 +10,6 @@
   $effect(() => {
     const c = page.url.searchParams.get('code');
     if (c) { code = c; track(); }
-    else if (!order) { code = 'ORD-DEMO123'; track(); }
   });
 
   function track() {

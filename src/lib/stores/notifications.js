@@ -1,5 +1,6 @@
 import { writable } from 'svelte/store';
 import { browser } from '$app/environment';
+import { dev } from '$app/environment';
 
 function load(key, fallback) {
   if (!browser) return fallback;
@@ -7,14 +8,25 @@ function load(key, fallback) {
 }
 function save(key, val) { if (browser) localStorage.setItem(key + '_' + (browser ? location.host : 'ssr'), JSON.stringify(val)); }
 
-const defaults = [
-  { id: 1, title: 'Welcome to our store', body: 'Thanks for visiting.', date: 'Today', read: false },
-  { id: 2, title: 'Order shipped', body: 'Your recent order is on its way.', date: 'Yesterday', read: false },
-  { id: 3, title: 'New arrivals', body: 'Fresh products just dropped.', date: '2 days ago', read: true },
-];
-
 function createNotifications() {
-  const { subscribe, set, update } = writable(load('notifications', defaults));
+  const { subscribe, set, update } = writable([]);
+  if (browser) {
+    (async () => {
+      try {
+        const res = await fetch('/api/notifications');
+        if (!res.ok) return;
+        const data = await res.json();
+        const cached = load('notifications', []);
+        // merge: prefer server data, keep read state from cache
+        const merged = data.map(n => {
+          const c = cached.find(x => x.id === n.id);
+          return c ? { ...n, read: c.read } : n;
+        });
+        set(merged);
+        save('notifications', merged);
+      } catch (e) { console.error(e); }
+    })();
+  }
   subscribe(v => save('notifications', v));
   return {
     subscribe,

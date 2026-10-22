@@ -405,5 +405,21 @@
       "800": "#9f1239",
       "900": "#881337"
     }
-  }
+  },
+  "notifications": [
+    {
+      "id": 1,
+      "title": "StyleCo new collection",
+      "body": "Summer fashion just dropped.",
+      "date": "Today",
+      "read": false
+    },
+    {
+      "id": 2,
+      "title": "Order shipped",
+      "body": "Your fashion order is on its way.",
+      "date": "Yesterday",
+      "read": false
+    }
+  ]
 }

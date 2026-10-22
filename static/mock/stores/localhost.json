@@ -1016,5 +1016,14 @@
       "800": "#3730a3",
       "900": "#312e81"
     }
-  }
+  },
+  "notifications": [
+    {
+      "id": 1,
+      "title": "Welcome to Lumen",
+      "body": "Thanks for visiting our store.",
+      "date": "Today",
+      "read": false
+    }
+  ]
 }

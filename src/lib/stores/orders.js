@@ -8,22 +8,7 @@ function load(key, fallback) {
 function save(key, val) { if (browser) localStorage.setItem(key + '_' + (browser ? location.host : 'ssr'), JSON.stringify(val)); }
 
 function createOrders() {
-  let orders = load('orders', []);
-  if (orders.length === 0) {
-    orders = [{
-      id: 'ORD-DEMO123',
-      date: new Date().toLocaleDateString(),
-      items: [],
-      subtotal: 0,
-      shipping: 5,
-      total: 5,
-      status: 'Shipped',
-      shippingAddress: '123 Market St, San Francisco, CA 94103',
-      paymentMethod: 'Visa ending in 4242',
-      trackingNumber: 'TRK987654321',
-    }];
-    save('orders', orders);
-  }
+  const orders = load('orders', []);
   const { subscribe, set, update } = writable(orders);
   subscribe(v => save('orders', v));
   return {

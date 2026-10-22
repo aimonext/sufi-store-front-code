@@ -226,5 +226,14 @@
       "800": "#3730a3",
       "900": "#312e81"
     }
-  }
+  },
+  "notifications": [
+    {
+      "id": 1,
+      "title": "Welcome to Store One",
+      "body": "Thanks for visiting.",
+      "date": "Today",
+      "read": false
+    }
+  ]
 }

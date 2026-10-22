@@ -470,5 +470,21 @@
       "800": "#1e40af",
       "900": "#1e3a8a"
     }
-  }
+  },
+  "notifications": [
+    {
+      "id": 1,
+      "title": "TechHub new arrivals",
+      "body": "Latest laptops in stock.",
+      "date": "Today",
+      "read": false
+    },
+    {
+      "id": 2,
+      "title": "Order shipped",
+      "body": "Your tech order is on its way.",
+      "date": "Yesterday",
+      "read": false
+    }
+  ]
 }

@@ -199,5 +199,21 @@
       "800": "#166534",
       "900": "#14532d"
     }
-  }
+  },
+  "notifications": [
+    {
+      "id": 1,
+      "title": "FreshMart weekly deals",
+      "body": "New grocery discounts this week.",
+      "date": "Today",
+      "read": false
+    },
+    {
+      "id": 2,
+      "title": "Order delivered",
+      "body": "Your produce order has been delivered.",
+      "date": "Yesterday",
+      "read": false
+    }
+  ]
 }
