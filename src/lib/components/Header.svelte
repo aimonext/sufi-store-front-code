@@ -86,7 +86,6 @@
     <nav class="max-w-7xl mx-auto px-4 py-2 flex items-center justify-center gap-8 text-sm font-medium text-gray-600 dark:text-gray-300">
       <a href="/" class="hover:text-brand-600 transition">Home</a>
       <a href="/shop" class="hover:text-brand-600 transition">Shop</a>
-      <a href="/about" class="hover:text-brand-600 transition">About</a>
       <a href="/contact" class="hover:text-brand-600 transition">Contact</a>
       <a href="/orders" class="hover:text-brand-600 transition">Orders</a>
       <a href="/wishlist" class="hover:text-brand-600 transition">Wishlist</a>
@@ -104,7 +103,6 @@
       <nav class="flex flex-col text-sm font-medium text-gray-700 dark:text-gray-200">
         <a href="/" class="block py-2">Home</a>
         <a href="/shop" class="block py-2">Shop</a>
-        <a href="/about" class="block py-2">About</a>
         <a href="/contact" class="block py-2">Contact</a>
         <a href="/orders" class="block py-2">Orders</a>
         <a href="/wishlist" class="block py-2">Wishlist</a>
