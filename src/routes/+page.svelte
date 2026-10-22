@@ -5,8 +5,8 @@
   let { data } = $props();
 
   let heroIndex = $state(0);
-  const heroSlides = [
-    { eyebrow: data.store.heroEyebrow, title: data.store.heroTitle, subtitle: data.store.heroSubtitle, image: '/img/hero1_600x750.jpg', cta: 'Shop the collection', link: '/shop' },
+  const heroSlides = data.store.heroSlides || [
+    { eyebrow: data.store.heroEyebrow, title: data.store.heroTitle, subtitle: data.store.heroSubtitle, image: 'https://picsum.photos/seed/hero1/600/750', cta: 'Shop the collection', link: '/shop' },
   ];
 
   const featured = data.products.slice(0, 8);
