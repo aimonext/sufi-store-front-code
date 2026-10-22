@@ -212,5 +212,19 @@
     "address": "456 Commerce Ave, New York, NY"
   },
   "privacy": "# Privacy Policy\\n\\nWelcome to Store One. We respect your privacy.",
-  "terms": "# Terms & Conditions\\n\\nBy using Store One, you agree to our terms."
+  "terms": "# Terms & Conditions\\n\\nBy using Store One, you agree to our terms.",
+  "theme": {
+    "brand": {
+      "50": "#f5f7ff",
+      "100": "#ebeffe",
+      "200": "#d6ddfe",
+      "300": "#b3befd",
+      "400": "#8a98fc",
+      "500": "#6366f1",
+      "600": "#4f46e5",
+      "700": "#4338ca",
+      "800": "#3730a3",
+      "900": "#312e81"
+    }
+  }
 }
