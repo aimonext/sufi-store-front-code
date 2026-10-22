@@ -1,6 +1,8 @@
 import { json } from '@sveltejs/kit';
-import { PRODUCTS } from '#lib/data/products.js';
+import { getStoreByHost } from '#lib/mock/stores.js';
 
-export function GET() {
-  return json(PRODUCTS);
+export function GET({ request }) {
+  const host = request.headers.get('host') || 'localhost';
+  const store = getStoreByHost(host);
+  return json(store.products || []);
 }

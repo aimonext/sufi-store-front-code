@@ -1,3 +1,5 @@
+import { PRODUCTS } from '#lib/data/products.js';
+
 export const STORES = {
   localhost: {
     slug: 'lumen',
@@ -11,7 +13,11 @@ export const STORES = {
       { name: 'Computers', img: '/img/catcomp_400x400.jpg' },
       { name: 'Clothing', img: '/img/catcloth_400x400.jpg' },
       { name: 'Grocery', img: '/img/catgro_400x400.jpg' },
+      { name: 'Home', img: '/img/cathome_400x400.jpg' },
+      { name: 'Beauty', img: '/img/catbeau_400x400.jpg' },
+      { name: 'Sports', img: '/img/catsport_400x400.jpg' },
     ],
+    products: PRODUCTS,
   },
   'store1.com': {
     slug: 'store1',
@@ -24,6 +30,7 @@ export const STORES = {
       { name: 'Electronics', img: '/img/catelec_400x400.jpg' },
       { name: 'Home', img: '/img/cathome_400x400.jpg' },
     ],
+    products: PRODUCTS.filter(p => p.category === 'Electronics' || p.category === 'Home'),
   },
 };
 

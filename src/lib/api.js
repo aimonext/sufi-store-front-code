@@ -4,7 +4,8 @@ import { dev } from '$app/environment';
 const cache = new Map();
 
 export async function apiFetch(path, fetchFn = fetch) {
-  const key = path;
+  const host = browser ? location.host : 'ssr';
+  const key = host + '::' + path;
   if (!dev && browser && cache.has(key)) {
     return cache.get(key);
   }
