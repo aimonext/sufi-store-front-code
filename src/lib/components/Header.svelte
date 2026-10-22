@@ -3,6 +3,7 @@
   import { cart } from '#lib/stores/cart.js';
   import { wishlist } from '#lib/stores/wishlist.js';
   import { notifications } from '#lib/stores/notifications.js';
+  import { storeConfig } from '#lib/stores/storeConfig.js';
 
   let mobileOpen = $state(false);
   let userOpen = $state(false);
@@ -32,7 +33,7 @@
 <header class="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-gray-200/60 dark:bg-gray-900/80 dark:border-gray-700">
   <div class="max-w-7xl mx-auto px-4 py-3 flex items-center gap-3">
     <a href="/" class="flex items-center gap-2 font-display text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-      Lumen
+      {$storeConfig?.storeName || 'Lumen'}
     </a>
     <div class="flex-1"></div>
     <div class="relative hidden md:block">

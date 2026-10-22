@@ -1,5 +1,6 @@
 <script>
   import { cart } from '#lib/stores/cart.js';
+  import { storeConfig } from '#lib/stores/storeConfig.js';
   let year = new Date().getFullYear();
 </script>
 
@@ -21,6 +22,6 @@
         <a href="/terms" class="hover:text-gray-900 dark:hover:text-white transition">Terms &amp; Conditions</a>
       </div>
     </div>
-    <div class="mt-4 text-center text-xs text-gray-400">© {year} Lumen · Powered by Svelte</div>
+    <div class="mt-4 text-center text-xs text-gray-400">© {year} {$storeConfig?.storeName || 'Lumen'} · Powered by Svelte</div>
   </div>
 </footer>
