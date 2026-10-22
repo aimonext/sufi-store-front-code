@@ -1,6 +1,5 @@
 <script>
   import { page } from '$app/state';
-  import { PRODUCTS, relatedProducts } from '#lib/data/products.js';
   let { data } = $props();
   import { cart } from '#lib/stores/cart.js';
   import { wishlist } from '#lib/stores/wishlist.js';
