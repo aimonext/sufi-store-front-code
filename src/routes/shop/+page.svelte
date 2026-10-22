@@ -1,5 +1,6 @@
 <script>
-  import { PRODUCTS, CATEGORIES } from '#lib/data/products.js';
+  let { data } = $props();
+  const PRODUCTS = data.products;
   import { cart } from '#lib/stores/cart.js';
   import { wishlist } from '#lib/stores/wishlist.js';
 

@@ -1,10 +1,11 @@
 <script>
   import { page } from '$app/state';
-  import { PRODUCTS, getProduct, relatedProducts } from '#lib/data/products.js';
+  import { PRODUCTS, relatedProducts } from '#lib/data/products.js';
+  let { data } = $props();
   import { cart } from '#lib/stores/cart.js';
   import { wishlist } from '#lib/stores/wishlist.js';
 
-  let product = $derived(getProduct(page.params.id));
+  let product = $derived(data.products.find(p => p.id === parseInt(data.id)));
   let qty = $state(1);
   let mediaIndex = $state(0);
   let selectedAttrs = $state({});

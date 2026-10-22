@@ -1,33 +1,20 @@
 <script>
-  import { PRODUCTS, CATEGORIES } from '#lib/data/products.js';
   import { cart } from '#lib/stores/cart.js';
   import { wishlist } from '#lib/stores/wishlist.js';
 
+  let { data } = $props();
+
   let heroIndex = $state(0);
   const heroSlides = [
-    { eyebrow: 'Spring 2026', title: 'Objects made to be kept.', subtitle: 'Small-batch goods for everyday rituals.', image: '/img/hero1_600x750.jpg', cta: 'Shop the collection', link: '/shop' },
-    { eyebrow: 'New arrivals', title: 'Fresh from the studio.', subtitle: 'Handcrafted ceramics and textiles just landed.', image: '/img/hero2_600x750.jpg', cta: 'Explore new', link: '/shop' },
-    { eyebrow: 'Limited edition', title: 'One of a kind.', subtitle: 'Numbered pieces from our maker partners.', image: '/img/hero3_600x750.jpg', cta: 'View collection', link: '/shop' },
+    { eyebrow: data.store.heroEyebrow, title: data.store.heroTitle, subtitle: data.store.heroSubtitle, image: '/img/hero1_600x750.jpg', cta: 'Shop the collection', link: '/shop' },
   ];
 
-  if (typeof window !== 'undefined') {
-    setInterval(() => { heroIndex = (heroIndex + 1) % heroSlides.length; }, 5000);
-  }
+  const featured = data.products.slice(0, 8);
+  const categories = data.store.categories;
 
-  let query = $state('');
-  let activeCat = $state('all');
-
-  const featured = PRODUCTS.slice(0, 8);
-
-  function addToCart(p) {
-    cart.add(p);
-  }
-  function toggleWish(p) {
-    wishlist.toggle(p);
-  }
-  function isWished(id) {
-    return $wishlist.some(x => x.id === id);
-  }
+  function addToCart(p) { cart.add(p); }
+  function toggleWish(p) { wishlist.toggle(p); }
+  function isWished(id) { return $wishlist.some(x => x.id === id); }
 </script>
 
 <section class="relative overflow-hidden">
@@ -66,7 +53,7 @@
     <a href="/shop" class="text-sm text-brand-600 hover:underline">View all</a>
   </div>
   <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-    {#each CATEGORIES.slice(0,4) as c}
+    {#each categories.slice(0,4) as c}
       <a href="/shop" class="group relative aspect-square rounded-2xl overflow-hidden shadow-sm hover:shadow-soft transition">
         <img src={c.img} alt={c.name} loading="lazy" class="w-full h-full object-cover group-hover:scale-110 transition duration-700" />
         <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
