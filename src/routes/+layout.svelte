@@ -20,6 +20,8 @@
       Object.entries(data.store.theme.brand).forEach(([k, v]) => root.style.setProperty('--brand-' + k, v));
     }
     ready = true;
+    const s = document.getElementById('splash');
+    if (s) s.style.display = 'none';
   });
 </script>
 

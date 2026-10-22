@@ -7,6 +7,11 @@
 		%sveltekit.head%
 	</head>
 	<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100" data-sveltekit-preload-data="hover">
+		<div id="splash" style="position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:#f9fafb;">
+			<div style="text-align:center;">
+				<div style="font-size:2rem;font-weight:700;color:#111;">Loading...</div>
+			</div>
+		</div>
 		<div style="display: contents">%sveltekit.body%</div>
 	</body>
 </html>
