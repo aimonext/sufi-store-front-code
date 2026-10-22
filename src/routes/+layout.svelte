@@ -5,13 +5,18 @@
   import Header from '#lib/components/Header.svelte';
   import Footer from '#lib/components/Footer.svelte';
 
-  let { children } = $props();
+  let { data, children } = $props();
+
+  // keep client store in sync for theme application
+  $effect(() => {
+    if (data?.store) storeConfig.set(data.store);
+  });
 </script>
 
 <svelte:head>
-  <title>{$storeConfig?.storeName || 'Store'} — Shop</title>
+  <title>{data?.store?.storeName || 'Store'} — Shop</title>
 </svelte:head>
 
-<Header />
+<Header store={data?.store} />
 {@render children()}
-<Footer />
+<Footer store={data?.store} />

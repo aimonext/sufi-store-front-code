@@ -5,10 +5,20 @@
   import { notifications } from '#lib/stores/notifications.js';
   import { storeConfig } from '#lib/stores/storeConfig.js';
 
+  let { store } = $props();
   let mobileOpen = $state(false);
   let userOpen = $state(false);
   let query = $state('');
   let scrolled = $state(false);
+
+  // apply theme colors
+  $effect(() => {
+    const s = store || $storeConfig;
+    if (s && s.theme && s.theme.brand && typeof document !== 'undefined') {
+      const root = document.documentElement;
+      Object.entries(s.theme.brand).forEach(([k, v]) => root.style.setProperty('--brand-' + k, v));
+    }
+  });
 
   if (typeof window !== 'undefined') {
     window.addEventListener('scroll', () => { scrolled = window.scrollY > 10; }, { passive: true });
@@ -33,7 +43,7 @@
 <header class="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-gray-200/60 dark:bg-gray-900/80 dark:border-gray-700">
   <div class="max-w-7xl mx-auto px-4 py-3 flex items-center gap-3">
     <a href="/" class="flex items-center gap-2 font-display text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-      {$storeConfig?.storeName || 'Lumen'}
+      {store?.storeName || $storeConfig?.storeName || 'Lumen'}
     </a>
     <div class="flex-1"></div>
     <div class="relative hidden md:block">
