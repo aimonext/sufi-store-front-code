@@ -89,7 +89,7 @@
     newQuestion = '';
   }
 
-  const related = $derived(() => relatedProducts(product));
+  const related = $derived(() => data && product ? data.products.filter(x => x.category === product.category && x.id !== product.id).slice(0, 4) : []);
 </script>
 
 {#if !product}

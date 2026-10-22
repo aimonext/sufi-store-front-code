@@ -1,4 +1,6 @@
 <script>
+  import { marked } from 'marked';
+  let { data } = $props();
   let sending = $state(false);
   let sent = $state(false);
   let form = $state({ name: '', email: '', subject: '', message: '' });
@@ -18,9 +20,9 @@
     <h1 class="font-display text-4xl font-bold text-gray-900 dark:text-white">We'd love to hear from you.</h1>
     <p class="mt-4 text-gray-500 leading-relaxed">Questions about an order, a product, or just want to say hello? Send us a message and we'll get back within 24 hours.</p>
     <div class="mt-8 space-y-4 text-sm text-gray-600 dark:text-gray-300">
-      <div class="flex items-center gap-3"><span class="w-10 h-10 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center">✉</span> hello@lumen.store</div>
-      <div class="flex items-center gap-3"><span class="w-10 h-10 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center">☎</span> +1 (555) 012-3456</div>
-      <div class="flex items-center gap-3"><span class="w-10 h-10 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center">📍</span> 123 Market St, San Francisco, CA</div>
+      <div class="flex items-center gap-3"><span class="w-10 h-10 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center">✉</span> {data.store.contact?.email}</div>
+      <div class="flex items-center gap-3"><span class="w-10 h-10 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center">☎</span> {data.store.contact?.phone}</div>
+      <div class="flex items-center gap-3"><span class="w-10 h-10 rounded-full bg-brand-100 text-brand-600 flex items-center justify-center">📍</span> {data.store.contact?.address}</div>
     </div>
   </div>
 

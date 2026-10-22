@@ -18,6 +18,7 @@ export const STORES = {
       { name: 'Sports', img: '/img/catsport_400x400.jpg' },
     ],
     products: PRODUCTS,
+    contact: { email: 'hello@lumen.store', phone: '+1 (555) 012-3456', address: '123 Market St, San Francisco, CA' },
     privacy: `# Privacy Policy
 
 We respect your privacy. This policy explains how we collect, use, and protect your personal information when you shop with us.
@@ -69,6 +70,7 @@ We are not liable for indirect or consequential damages arising from use of our 
       { name: 'Home', img: '/img/cathome_400x400.jpg' },
     ],
     products: PRODUCTS.filter(p => p.category === 'Electronics' || p.category === 'Home'),
+    contact: { email: 'hello@store1.com', phone: '+1 (555) 999-0000', address: '456 Commerce Ave, New York, NY' },
     privacy: `# Privacy Policy\\n\\nWelcome to Store One. We respect your privacy.`,
     terms: `# Terms & Conditions\\n\\nBy using Store One, you agree to our terms.`,
   },

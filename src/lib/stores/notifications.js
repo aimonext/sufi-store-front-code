@@ -8,7 +8,7 @@ function load(key, fallback) {
 function save(key, val) { if (browser) localStorage.setItem(key, JSON.stringify(val)); }
 
 const defaults = [
-  { id: 1, title: 'Welcome to Lumen', body: 'Thanks for visiting our store.', date: 'Today', read: false },
+  { id: 1, title: 'Welcome to our store', body: 'Thanks for visiting.', date: 'Today', read: false },
   { id: 2, title: 'Order shipped', body: 'Your recent order is on its way.', date: 'Yesterday', read: false },
   { id: 3, title: 'New arrivals', body: 'Fresh products just dropped.', date: '2 days ago', read: true },
 ];
