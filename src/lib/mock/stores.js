@@ -18,6 +18,44 @@ export const STORES = {
       { name: 'Sports', img: '/img/catsport_400x400.jpg' },
     ],
     products: PRODUCTS,
+    privacy: `# Privacy Policy
+
+We respect your privacy. This policy explains how we collect, use, and protect your personal information when you shop with us.
+
+## Information we collect
+
+We collect information you provide at checkout (name, email, address) and browsing data to improve your experience.
+
+## How we use it
+
+Your information is used to process orders, provide support, and send updates you opt into. We never sell your data.
+
+## Cookies
+
+We use cookies to remember your cart and preferences. You can disable cookies in your browser settings.
+
+## Contact
+
+Questions? Reach us at privacy@lumen.store.`,
+    terms: `# Terms & Conditions
+
+By using this store, you agree to the following terms.
+
+## Orders
+
+All orders are subject to availability. We reserve the right to cancel orders in case of pricing errors.
+
+## Shipping
+
+Shipping times are estimates and may vary. Free shipping applies to orders over $50.
+
+## Returns
+
+Items may be returned within 30 days in original condition. Refunds are issued to the original payment method.
+
+## Liability
+
+We are not liable for indirect or consequential damages arising from use of our products.`,
   },
   'store1.com': {
     slug: 'store1',
@@ -31,6 +69,8 @@ export const STORES = {
       { name: 'Home', img: '/img/cathome_400x400.jpg' },
     ],
     products: PRODUCTS.filter(p => p.category === 'Electronics' || p.category === 'Home'),
+    privacy: `# Privacy Policy\\n\\nWelcome to Store One. We respect your privacy.`,
+    terms: `# Terms & Conditions\\n\\nBy using Store One, you agree to our terms.`,
   },
 };
 

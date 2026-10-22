@@ -1,7 +1,7 @@
 <script>
   import { marked } from 'marked';
-  import termsMd from '#lib/content/terms.md?raw';
-  const html = marked(termsMd);
+  let { data } = $props();
+  const html = marked(data.store.terms || '');
 </script>
 
 <main class="max-w-3xl mx-auto px-4 py-10">

@@ -1,7 +1,7 @@
 <script>
   import { marked } from 'marked';
-  import privacyMd from '#lib/content/privacy.md?raw';
-  const html = marked(privacyMd);
+  let { data } = $props();
+  const html = marked(data.store.privacy || '');
 </script>
 
 <main class="max-w-3xl mx-auto px-4 py-10">
